@@ -5,8 +5,13 @@
   max-width: 420px;
   padding: 30px 38px 66px;
   margin: 0 auto;
-  border: 1px solid #cccccc;
 }
+
+.form-header{
+	max-width: 420px;
+	margin: 0 auto;
+}
+
 .input-group{
     height: 45px;
     margin-bottom: 15px;
@@ -33,4 +38,8 @@
     position: relative;
     margin-top: -40px;
     color: #60B99A;
+}
+#register-div{
+	display:none;
+
 }
