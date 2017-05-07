@@ -1,22 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<title>Rocket Garage</title>
-</head>
+<%@ include file="includes/head"%>
 <body>
  
  <script type="text/javascript" src="scripts/login.js"></script>
  <div class = "container">
             <div class="wrapper">
-            	<div class ="form-header">
-	                <h3 class="form-signin-heading text-center" >
-	                    <img src="imgs/example.ico" style="margin:30px; width:60px;height:60px;" alt=""/>
+            	<div class ="form-header" >
+	                <h3 class="form-signin-heading text-center" style="color:white; font-size:30pt;" >
+	                <img src="imgs/logo.png" style="width:120px;height:120px;" alt=""/>                	
+	                    <img id ="rocket" src="imgs/example.png" style="position:absolute;width:60px;height:60px;" alt=""/>
+	                </h3>
+	                  <h3 class="form-signin-heading text-center" style="color:white; font-size:30pt;" >
+	                	Rocket Garage
 	                </h3>
 	                <hr class="spartan" style="width:80%;">
                 </div>
@@ -28,15 +22,15 @@
 	                        <span class="input-group-addon" >
 	                            <i class="glyphicon glyphicon-user"></i>
 	                        </span>
-	                       <input type="text" class="form-control" style="height:45px;" name="username" placeholder="Username" required="" autofocus="" />
+	                       <input type="text" class="form-control" style="height:45px;" name="username" placeholder="Username" required="" />
 	                    </div>
 	                    <div class="input-group">
 	                        <span class="input-group-addon">
 	                            <i class="glyphicon glyphicon-lock"></i>
 	                        </span>
-	                       <input type="password" class="form-control" style="height:45px;" name="password" placeholder="Password" required=""/>         	  
+	                       <input type="password" class="form-control" style="height:47px;" name="password" placeholder="Password" required=""/>         	  
 	                    </div>
-	                    <button class="btn btn-lg btn-primary btn-block"  value="login" name="login" type="Submit">Login</button>
+	                    <button class="btn asd btn-lg btn-primary btn-block"  value="login" name="login" type="Submit">Login</button>
 	                    
 	                    <button class="btn btn-primary btn-block" style="margin-top:20px" name="register" type="button"  value="register">Register</button>                  			
             	</form>
