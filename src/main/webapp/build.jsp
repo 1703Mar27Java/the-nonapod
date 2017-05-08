@@ -2,6 +2,8 @@
 <body>
 
 	<script type="text/javascript" src="scripts/build.js"></script>
+	<script type="text/javascript" src="scripts/html2canvas.js"></script>
+	<script type="text/javascript" src="scripts/FileSaver.min.js"></script>
 
 	<%@ include file="includes/navbar"%>
 
@@ -13,7 +15,8 @@
 			<p>1) Drag shapes into the grid to build a rocket</p><br>
 			<p>2) Click placed shapes to rotate them</p><br>
 			<p>3) Hold control and click a placed shape to create a duplicate</p><br>
-			<p>4) Have fun!</p>
+			<p>4) Click a tile and press the Delete key to delete a shape
+			<p>5) Have fun!</p>
 		
 		</div>
 	
@@ -30,18 +33,27 @@
 			</div>
 	
 			<div id="palet">
-				<img id="drag1" class="palet-item north" src="imgs/square.jpg" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag1" class="palet-item north" src="imgs/square.jpg" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag1" class="palet-item north" src="imgs/square.jpg" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag1" class="palet-item north" src="imgs/square.jpg" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag1" class="palet-item north" src="imgs/square.jpg" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag1" class="palet-item north" src="imgs/square.jpg" draggable="true" ondragstart="drag(event)" width="30" height="30"> 
-				<img id="drag2" class="palet-item north" src="imgs/triangle.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag2" class="palet-item north" src="imgs/triangle.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag2" class="palet-item north" src="imgs/triangle.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag2" class="palet-item north" src="imgs/triangle.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag2" class="palet-item north" src="imgs/triangle.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
-				<img id="drag2" class="palet-item north" src="imgs/triangle.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag1" class="palet-item north" src="imgs/shapes/blackSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag2" class="palet-item north" src="imgs/shapes/blackTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag3" class="palet-item north" src="imgs/shapes/blueSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag4" class="palet-item north" src="imgs/shapes/blueTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag5" class="palet-item north" src="imgs/shapes/graySquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag6" class="palet-item north" src="imgs/shapes/grayTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag7" class="palet-item north" src="imgs/shapes/greenSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag8" class="palet-item north" src="imgs/shapes/greenTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag9" class="palet-item north" src="imgs/shapes/magentaSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag10" class="palet-item north" src="imgs/shapes/mengentaTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag11" class="palet-item north" src="imgs/shapes/orangeSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag12" class="palet-item north" src="imgs/shapes/orangeTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag13" class="palet-item north" src="imgs/shapes/pinkSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag14" class="palet-item north" src="imgs/shapes/pinkTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag15" class="palet-item north" src="imgs/shapes/redSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag16" class="palet-item north" src="imgs/shapes/redTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag17" class="palet-item north" src="imgs/shapes/white.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag18" class="palet-item north" src="imgs/shapes/whiteTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag19" class="palet-item north" src="imgs/shapes/yellowSquare.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				<img id="drag20" class="palet-item north" src="imgs/shapes/yellowTri.png" draggable="true" ondragstart="drag(event)" width="30" height="30">
+				
 			</div>
 			
 	
@@ -66,7 +78,7 @@
 			</div>
 			
 		<div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">submit</button>
+          <button type="button" id="saveSub" class="btn btn-default" data-dismiss="modal">submit</button>
         </div>
 		</form>
 		
@@ -77,9 +89,9 @@
   </div>
 
 				
-	<div class="button-panel" style="margin-top: 110px;">
-		<button id="save" style="margin-top:220px;" class="btn btn-lg btn-primary option">Back to<br>Garage</button><br>
-		<button id="back" data-toggle="modal" data-target="#myModal" class="btn btn-lg btn-primary option">Save</button>			
+	<div class="button-panel" style="float:right;margin-top: 110px;">
+		<button id="back" style="margin-top:220px;" class="btn btn-lg btn-primary option">Back to<br>Garage</button><br>
+		<button id="save" data-toggle="modal" data-target="#myModal" class="btn btn-lg btn-primary option">Save</button>			
 	</div>
 
 	</div>

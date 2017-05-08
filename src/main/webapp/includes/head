@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,3 +18,17 @@
 
 <title>Rocket Garage</title>
 </head>
+
+<noscript>
+    <style type="text/css">
+        .container {display:none;}
+        nav{display:none;}
+    </style>
+    <div class="noscriptmsg">
+<div class ="form-header" >
+			<img src="imgs/logo.png" style="width:400px;height:400px;" alt=""/>
+			<br><br><br><br>
+			<h1>We're sorry but to enjoy our site to the fullest you must enable JavaScript</h1>
+</div>
+    </div>
+</noscript>
