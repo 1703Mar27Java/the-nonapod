@@ -32,6 +32,16 @@ function createGrid() {
 
 $(document).ready(function(){
 	
+	var palet = $("#palet");
+	
+	$('#palet').children().each(function () {
+		this.addEventListener("dragstart", function(e) {
+		    var crt = this.cloneNode(true);
+		    crt.style.display = "none"; /* or visibility: hidden, or any of the above */
+		}, false);
+	});
+	
+	
 	createGrid();
 
 	$('.tile').click(function() {
@@ -47,6 +57,7 @@ $(document).ready(function(){
 		}
 	});
 
+	
 	$('input').click(function() {
 		var img = $('.active img');
 		if (img.hasClass('north')) {
@@ -68,4 +79,17 @@ $(document).ready(function(){
 		}
 	});	
 	
+	
+    $("#saveSub").click(function() { 
+    	$(".active").removeClass('active');
+        html2canvas($("#grid"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+                canvas.toBlob(function(blob) {
+                    saveAs(blob, "Dashboard.png"); 
+                });
+            }
+        });
+    });
+    
 });

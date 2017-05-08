@@ -15,7 +15,7 @@
 
 			<div class="flex-container">
 				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
+					<img class="flex-nail" src="imgs/sample.png">
 					<div class ="flex-name">
 					My little rocket  
 					</div>										

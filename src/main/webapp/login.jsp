@@ -1,4 +1,6 @@
 <%@ include file="includes/head"%>
+
+
 <body>
  
  <script type="text/javascript" src="scripts/login.js"></script>
@@ -32,7 +34,8 @@
 	                    </div>
 	                    <button class="btn asd btn-lg btn-primary btn-block"  value="login" name="login" type="Submit">Login</button>
 	                    
-	                    <button class="btn btn-primary btn-block" style="margin-top:20px" name="register" type="button"  value="register">Register</button>                  			
+	                    <button class="btn btn-primary btn-block" style="margin-top:20px" name="register" type="button"  value="register">Register</button>
+	                                      			
             	</form>
             </div> 
             
@@ -40,15 +43,15 @@
             <form method="post" action="#" class="form-signin" style="margin-top:0;">
 						
 						<div class="form-group">
-							<label class="control-label" for="signupName">Username</label>
+							<label class="control-label" for="signupName">Username</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
 							<input id="signupName" type="text" maxlength="50" class="form-control">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="signupEmail">Email</label>
+							<label class="control-label" for="signupEmail">Email</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
 							<input id="signupEmail" type="email" maxlength="50" class="form-control">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="signupPassword">Password</label>
+							<label class="control-label" for="signupPassword">Password</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
 							<input id="signupPassword" type="password" maxlength="25" class="form-control"  length="40">
 						</div>
 						<div class="form-group">
