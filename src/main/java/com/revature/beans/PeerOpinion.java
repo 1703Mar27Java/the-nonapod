@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PEER_OPINION")
-public class PeerAffirmation 
+public class PeerOpinion 
 {
 	
 	@Id
@@ -67,10 +67,10 @@ public class PeerAffirmation
 	@Override
 	public String toString() 
 	{
-		return "PeerAffirmation [id=" + id + ", opinion=" + opinion + ", author=" + author + ", rocket=" + rocket + "]";
+		return "PeerOpinion [id=" + id + ", opinion=" + opinion + ", author=" + author + ", rocket=" + rocket + "]";
 	}
 
-	public PeerAffirmation(int id, String opinion, User author, Rocket rocket) 
+	public PeerOpinion(int id, String opinion, User author, Rocket rocket) 
 	{
 		super();
 		this.id = id;
@@ -79,7 +79,7 @@ public class PeerAffirmation
 		this.rocket = rocket;
 	}
 
-	public PeerAffirmation() 
+	public PeerOpinion() 
 	{
 	}
 	

@@ -19,6 +19,9 @@ public class Rocket
 	
 	@Column(name = "LAYOUT", nullable = false)
 	private String layout;
+	
+	@Column(name= "ROCKET_PIC")
+	private String rocketPic;
 
 	public int getRocketId() 
 	{

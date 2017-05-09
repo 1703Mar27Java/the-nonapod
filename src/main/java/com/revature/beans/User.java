@@ -1,26 +1,13 @@
 package com.revature.beans;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "USERS")
 public class User 
 {
-	public User() 
-	{
-	}
-
-	public User(int id, String username, String password, String firstName, String lastName, String email) 
-	{
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeq")
 	@SequenceGenerator(allocationSize = 1, name = "userSeq", sequenceName = "USER_SEQ")
@@ -41,7 +28,16 @@ public class User
 	
 	@Column(name = "EMAIL", unique = true)
 	private String email;
+	
+	@Column(name = "USER_ROLE")
+	private String userRole;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinTable(name = "USER_ROCKET", joinColumns ={@JoinColumn(name ="ROCKET_ID")} )
+	private List<Rocket> userRockets = new ArrayList<Rocket>(0);
 
+	
+	
 	public int getId() 
 	{
 		return id;
@@ -102,11 +98,53 @@ public class User
 		this.email = email;
 	}
 
+	public String getUserRole() 
+	{
+		return userRole;
+	}
+
+	public void setUserRole(String userRole) 
+	{
+		this.userRole = userRole;
+	}
+
+	
+	
+	public List<Rocket> getUserRockets() 
+	{
+		return userRockets;
+	}
+
+	public void setUserRockets(List<Rocket> userRockets) 
+	{
+		this.userRockets = userRockets;
+	}
+
+	public User() 
+	{
+	}
+
+	public User(int id, String username, String password, String firstName, String lastName, String email, String userRole) 
+	{
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userRole = userRole;
+	}
+
 	@Override
-	public String toString() 
+	public String toString()
 	{
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + "]";
+				+ ", lastName=" + lastName + ", email=" + email + ", userRole=" + userRole + "]";
 	}
+	
+	
+
+
 	
 }

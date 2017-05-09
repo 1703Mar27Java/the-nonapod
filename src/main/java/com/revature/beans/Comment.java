@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "COMMENTS")
-public class Comments {
+public class Comment {
 
 	
 	@Id
@@ -90,11 +90,11 @@ public class Comments {
 	@Override
 	public String toString() 
 	{
-		return "Comments [id=" + id + ", comment=" + comment + ", author=" + author + ", rocket=" + rocket + ", date="
+		return "Comment [id=" + id + ", comment=" + comment + ", author=" + author + ", rocket=" + rocket + ", date="
 				+ date + "]";
 	}
 
-	public Comments(int id, String comment, User author, Rocket rocket, Timestamp date)
+	public Comment(int id, String comment, User author, Rocket rocket, Timestamp date)
 	{
 		super();
 		this.id = id;
@@ -104,7 +104,7 @@ public class Comments {
 		this.date = date;
 	}
 
-	public Comments() 
+	public Comment() 
 	{
 	}
 
