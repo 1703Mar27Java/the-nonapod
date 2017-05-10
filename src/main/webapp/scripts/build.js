@@ -190,8 +190,7 @@ $(document).ready(function(){
 	
     $("#saveSub").click(function() { 
     	AWS.config.update({
-    	    accessKeyId: "AKIAIZKPPGAW3SNIYDRQ",
-    	    secretAccessKey: "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", 
+
     	});
 
     	var s3 = new AWS.S3();
