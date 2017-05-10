@@ -27,8 +27,6 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 		try
 		{
 			Session sesh = sessionFactory.getCurrentSession();
-			sesh.saveOrUpdate(opinion.getAuthor());
-			sesh.saveOrUpdate(opinion.getRocket());
 			sesh.save(opinion);
 
 			return true;
@@ -67,7 +65,7 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 	}
 
 	@Override
-	public List<PeerOpinion> getUsers() 
+	public List<PeerOpinion> getOpinions() 
 	{
 		try
 		{
@@ -95,8 +93,6 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 			Session sesh = sessionFactory.getCurrentSession();
 			if(opinion.getId() != 0)
 			{
-				sesh.saveOrUpdate(opinion.getAuthor());
-				sesh.saveOrUpdate(opinion.getRocket());
 				sesh.update(opinion);
 				return true;	
 			}

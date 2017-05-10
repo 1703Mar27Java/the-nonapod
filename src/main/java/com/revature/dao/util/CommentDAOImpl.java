@@ -9,8 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Comment;
-import com.revature.beans.Rocket;
-import com.revature.beans.User;
 import com.revature.dao.CommentDAO;
 
 @Transactional
@@ -30,8 +28,7 @@ public class CommentDAOImpl implements CommentDAO
 		{
 			Session sesh = sessionFactory.getCurrentSession();
 			sesh.save(comment);
-			sesh.saveOrUpdate(comment.getAuthor());
-			sesh.saveOrUpdate(comment.getRocket());
+
 			return true;
 		}
 		catch(HibernateException ex)
@@ -83,7 +80,9 @@ public class CommentDAOImpl implements CommentDAO
 		{
 			ex.printStackTrace();
 			return null;
-		}	}
+		}	
+		
+	}
 
 	@Override
 	public boolean updateComment(Comment comment)
@@ -106,7 +105,9 @@ public class CommentDAOImpl implements CommentDAO
 		{
 			ex.printStackTrace();
 			return false;
-		}	}
+		}	
+		
+	}
 
 	@Override
 	public boolean deleteComment(int commentId) 

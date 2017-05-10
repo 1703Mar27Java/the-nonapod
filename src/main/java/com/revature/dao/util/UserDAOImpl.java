@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.beans.Rocket;
 import com.revature.beans.User;
 import com.revature.dao.UserDAO;
 
@@ -32,8 +33,11 @@ public class UserDAOImpl implements UserDAO
 
 			if(alreadyExists.size() == 0)
 			{
+				for(Rocket rock : user.getUserRockets())
+				{
+					sesh.saveOrUpdate(rock);
+				}
 				sesh.save(user);
-				sesh.saveOrUpdate(user.getUserRockets());
 				return true;	
 			}
 			else
@@ -104,8 +108,8 @@ public class UserDAOImpl implements UserDAO
 			Session sesh = sessionFactory.getCurrentSession();
 			if(user.getId() != 0)
 			{
+				sesh.saveOrUpdate(user.getUserRockets());
 				sesh.update(user);
-				sesh.update(user.getUserRockets());
 				return true;	
 			}
 			else

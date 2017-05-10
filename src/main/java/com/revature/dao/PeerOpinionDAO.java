@@ -10,7 +10,7 @@ public interface PeerOpinionDAO
 	public boolean createOpinion(PeerOpinion opinion);
 	
 	public PeerOpinion getOpinion(int opinionId);
-	public List<PeerOpinion> getUsers();
+	public List<PeerOpinion> getOpinions();
 	
 	public boolean updateOpinion(PeerOpinion opinion);
 	

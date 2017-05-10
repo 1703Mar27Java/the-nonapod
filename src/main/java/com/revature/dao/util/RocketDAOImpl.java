@@ -6,10 +6,12 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Rocket;
 import com.revature.dao.RocketDAO;
 
+@Transactional
 public class RocketDAOImpl implements RocketDAO 
 {
 	private SessionFactory sessionFactory;
@@ -24,7 +26,6 @@ public class RocketDAOImpl implements RocketDAO
 		try
 		{
 			Session sesh = sessionFactory.getCurrentSession();
-
 				sesh.save(rocket);
 				return true;	
 		}

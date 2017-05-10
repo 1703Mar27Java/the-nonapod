@@ -1,4 +1,4 @@
-package com.revature.driver;
+package com.revature.testDrivers;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.revature.beans.User;
 import com.revature.dao.UserDAO;
 
-public class Driver {
+public class UserDriver {
 	
 	public static void main(String[] args) 
 	{
@@ -62,16 +62,22 @@ public class Driver {
 		user5.setEmail("ehig@ehig.com");
 		
 		//dao.updateUser(user4);
-		//System.out.println(dao.createUser(user5));
+		//System.out.println(dao.createUser(user1));
 		
 		
-		dao.deleteUser(18);
+		//dao.deleteUser(1);
 		
-		/*
-		User userGot = dao.getUser(18);
-		System.out.println(userGot.toString());
+		
+		User userGot = dao.getUser(4);
+		//System.out.println(userGot.toString());
+		System.out.println(userGot.getUserRockets().toString());
 		System.out.println();
-		*/
+		
+		
+		//System.out.println(dao.getUser(1).toString());
+		//System.out.println(dao.getUser(1).getUserRockets().toString());
+		
+		//System.out.println(dao.deleteUser(2));
 		
 		ArrayList<User> users = new ArrayList<User>();
 		users = (ArrayList<User>) dao.getUsers();
