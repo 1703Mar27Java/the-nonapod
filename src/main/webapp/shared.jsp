@@ -53,8 +53,11 @@
 				<button id="view-s" style="margin-top:220px;" class="btn btn-lg btn-primary option">View</button><br>
 				<button id="send" class="btn btn-lg btn-primary option">Send to<br>Garage</button>
 			</div>
+			
+			
+			
+			
 
-			<input placeholder="Name your rocket!" type="text"></input>
 	</div>
 
 

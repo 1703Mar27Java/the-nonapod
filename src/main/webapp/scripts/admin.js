@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
 	
 	$(".flex-item").click(function(){
@@ -12,6 +13,8 @@ $(document).ready(function(){
 			$(this).addClass('selected').siblings().removeClass('selected');    
 		}
 	});
+	
+	
 	
 	
 });
