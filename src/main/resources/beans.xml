@@ -29,7 +29,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto"></prop>
 			</props>
 		</property>
 	</bean>
@@ -43,6 +43,14 @@
 	</bean>
 	
 	<bean id="commentDao" class="com.revature.dao.util.CommentDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	
+	<bean id="rocketDao" class="com.revature.dao.util.RocketDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	
+	<bean id="peerOpinionDao" class="com.revature.dao.util.PeerOpinionDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory"></property>
 	</bean>
 	

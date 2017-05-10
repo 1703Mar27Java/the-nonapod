@@ -1,5 +1,8 @@
 package com.revature.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -22,6 +25,15 @@ public class Rocket
 	
 	@Column(name= "ROCKET_PIC")
 	private String rocketPic;
+	
+	@Column(name= "SHARED_ROCKET")
+	private boolean shared;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="rocket")
+	private List<Comment> rocketComments = new ArrayList<Comment>(0);
+	
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="rocket")
+	private List<PeerOpinion> rocketOpinions = new ArrayList<PeerOpinion>(0);
 
 	public int getRocketId() 
 	{
@@ -51,6 +63,46 @@ public class Rocket
 	public void setLayout(String layout) 
 	{
 		this.layout = layout;
+	}
+
+	public String getRocketPic() 
+	{
+		return rocketPic;
+	}
+
+	public void setRocketPic(String rocketPic) 
+	{
+		this.rocketPic = rocketPic;
+	}
+
+	public boolean isShared() 
+	{
+		return shared;
+	}
+
+	public void setShared(boolean shared) 
+	{
+		this.shared = shared;
+	}
+
+	public List<Comment> getRocketComments() 
+	{
+		return rocketComments;
+	}
+
+	public void setRocketComments(List<Comment> rocketComments) 
+	{
+		this.rocketComments = rocketComments;
+	}
+
+	public List<PeerOpinion> getRocketOpinions() 
+	{
+		return rocketOpinions;
+	}
+
+	public void setRocketOpinions(List<PeerOpinion> rocketOpinions)
+	{
+		this.rocketOpinions = rocketOpinions;
 	}
 
 	@Override

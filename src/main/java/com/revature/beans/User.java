@@ -32,11 +32,9 @@ public class User
 	@Column(name = "USER_ROLE")
 	private String userRole;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinTable(name = "USER_ROCKET", joinColumns ={@JoinColumn(name ="ROCKET_ID")} )
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="owner")
 	private List<Rocket> userRockets = new ArrayList<Rocket>(0);
 
-	
 	
 	public int getId() 
 	{
