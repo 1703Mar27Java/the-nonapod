@@ -68,9 +68,9 @@ public class UserDriver {
 		//dao.deleteUser(1);
 		
 		
-		User userGot = dao.getUser(4);
+		//User userGot = dao.getUser(4);
 		//System.out.println(userGot.toString());
-		System.out.println(userGot.getUserRockets().toString());
+		//System.out.println(userGot.getUserRockets().toString());
 		System.out.println();
 		
 		

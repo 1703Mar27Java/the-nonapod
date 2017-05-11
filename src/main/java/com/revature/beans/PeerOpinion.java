@@ -2,8 +2,12 @@ package com.revature.beans;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name = "PEER_OPINION")
+@Component
 public class PeerOpinion 
 {
 	
@@ -18,10 +22,12 @@ public class PeerOpinion
 	
 	@ManyToOne
 	@JoinColumn(name="USER_ID", nullable = false)
+	@Autowired
 	private User author;
 	
 	@ManyToOne
 	@JoinColumn(name="ROCKET_ID", nullable = false)
+	@Autowired
 	private Rocket rocket;
 
 	public int getId() 

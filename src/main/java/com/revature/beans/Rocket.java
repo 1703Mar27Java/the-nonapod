@@ -5,9 +5,13 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 
 @Entity
 @Table(name = "ROCKETS")
+@Component
 public class Rocket 
 {
 	@Id
@@ -18,6 +22,7 @@ public class Rocket
 	
 	@ManyToOne
 	@JoinColumn(name="USER_ID", nullable = false)
+	@Autowired
 	private User owner;
 	
 	@Column(name = "LAYOUT", nullable = false)
@@ -30,9 +35,11 @@ public class Rocket
 	private boolean shared;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="rocket")
+	@Autowired
 	private List<Comment> rocketComments = new ArrayList<Comment>(0);
 	
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="rocket")
+	@Autowired
 	private List<PeerOpinion> rocketOpinions = new ArrayList<PeerOpinion>(0);
 
 	public int getRocketId() 

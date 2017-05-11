@@ -28,7 +28,7 @@
 	</bean>
 	
 	<mvc:resources  mapping="resources/**" location="/resources/"></mvc:resources>
-	
+		
 	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="url"

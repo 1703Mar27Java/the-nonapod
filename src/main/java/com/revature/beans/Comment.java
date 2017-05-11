@@ -12,8 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name = "COMMENTS")
+@Component
 public class Comment {
 
 	
@@ -28,10 +32,12 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name="USER_ID", nullable = false)
+	@Autowired
 	private User author;
 	
 	@ManyToOne
 	@JoinColumn(name="ROCKET_ID", nullable = false)
+	@Autowired
 	private Rocket rocket;
 	
 	@Column(name = "DATE_CREATED", nullable = false)
