@@ -4,8 +4,12 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name = "USERS")
+@Component
 public class User 
 {
 	@Id
@@ -33,6 +37,7 @@ public class User
 	private String userRole;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="owner")
+	@Autowired
 	private List<Rocket> userRockets = new ArrayList<Rocket>(0);
 
 	
