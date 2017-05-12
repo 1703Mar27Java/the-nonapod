@@ -176,11 +176,11 @@
         <form>
           	<div class="form-group">
 							<label class="control-label" for="name">Name your rocket:</label>
-							<input id="name" type="text" maxlength="50" class="form-control">
+							<input id="Rname" type="text" maxlength="50" class="form-control">
 			</div>
 			
 		<div class="modal-footer">
-          <button type="button" id="saveSub" class="btn btn-default" data-dismiss="modal">submit</button>
+          <button type="button" id="saveSub" class="btn btn-default" data-dismiss="modal">Submit</button>
         </div>
 		</form>
 		
