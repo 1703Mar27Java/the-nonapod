@@ -20,28 +20,34 @@ public class RocketDriver
 			Rocket rocket2= new Rocket();
 			Rocket rocket3= new Rocket();
 			User user = new User();
-			user.setId(4);
+			user.setId(1);
 			
 			
 			rocket.setLayout("test");
 			rocket.setOwner(user);
+			rocket.setRocketName("Rocket1");
 			
-			rocket2.setRocketId(3);
 			rocket2.setLayout("test2");
 			rocket2.setOwner(user);
+			rocket2.setRocketName("Rocket2");
+
 			
 			//rocket3.setRocketId(2);
 			rocket3.setLayout("test3");
 			rocket3.setOwner(user);
+			rocket3.setRocketName("Rocket3");
+
 			
-			//System.out.println(dao.createRocket(rocket3));
+			System.out.println(dao.createRocket(rocket3));
 			//System.out.println(dao.updateRocket(rocket2));
 			//System.out.println(dao.deleteRocket(2));
 			
+			/*
 			Rocket gotRocket = dao.getRocket(6);
 			System.out.println(gotRocket.getRocketComments().toString());
 			System.out.println(gotRocket.getRocketOpinions().toString());
 			System.out.println();
+			*/
 			
 			ArrayList<Rocket> rockets = new ArrayList<Rocket>();
 			rockets = (ArrayList<Rocket>) dao.getRockets();

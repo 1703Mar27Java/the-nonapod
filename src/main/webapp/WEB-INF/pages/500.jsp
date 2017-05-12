@@ -4,8 +4,8 @@
     pageEncoding="ISO-8859-1"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<spring:url value="resources/imgs/example.png" var="examplePNG"/>
-<spring:url value="resources/imgs/logo.png" var="logoPNG"/>
+<spring:url value="/resources/imgs/example.png" var="examplePNG"/>
+<spring:url value="/resources/imgs/logo.png" var="logoPNG"/>
 <spring:url value="/resources/css/styles.css" var="stylesCSS"/>
 
  

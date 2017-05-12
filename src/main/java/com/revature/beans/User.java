@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "USERS")
 @Component
+
 public class User 
 {
 	@Id
@@ -17,9 +18,11 @@ public class User
 	@SequenceGenerator(allocationSize = 1, name = "userSeq", sequenceName = "USER_SEQ")
 	@Column(name = "USER_ID")
 	private int id;
+
 	
 	@Column(name = "USERNAME", unique = true, nullable = false)
 	private String username;
+	
 	
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;

@@ -9,6 +9,7 @@ public interface UserDAO
 	public boolean createUser(User user);
 	
 	public User getUser(int userId);
+	public User getUser(String username);
 	public List<User> getUsers();
 	
 	public boolean updateUser(User user);
