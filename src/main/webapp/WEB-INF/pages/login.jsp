@@ -1,11 +1,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<spring:url value="resources/imgs/example.png" var="examplePNG"/>
-<spring:url value="resources/imgs/logo.png" var="logoPNG"/>
+<spring:url value="/resources/imgs/example.png" var="examplePNG"/>
+<spring:url value="/resources/imgs/logo.png" var="logoPNG"/>
 <spring:url value="/resources/css/styles.css" var="stylesCSS"/>
 
  
@@ -38,20 +39,6 @@
 </noscript>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <body>
 
  
@@ -70,25 +57,25 @@
                 </div>
                 
                  <div id="login-div">
-                <form action="" method="post" class="form-signin">  
+                <form action="home" method="post" class="form-signin">  
                 
 	                    <div class="input-group">
 	                        <span class="input-group-addon" >
 	                            <i class="glyphicon glyphicon-user"></i>
 	                        </span>
-	                       <input type="text" class="form-control" style="height:45px;" name="username" placeholder="Username" required="" />
+	                       <input type="text" class="form-control" style="height:45px;" name="username" placeholder="Username" required="">
 	                    </div>
 	                    <div class="input-group">
 	                        <span class="input-group-addon">
 	                            <i class="glyphicon glyphicon-lock"></i>
 	                        </span>
-	                       <input type="password" class="form-control" style="height:47px;" name="password" placeholder="Password" required=""/>         	  
+	                       <input type="password" class="form-control" style="height:47px;" name="password" placeholder="Password" required="">  
 	                    </div>
 	                    <button class="btn asd btn-lg btn-primary btn-block"  value="login" name="login" type="Submit">Login</button>
 	                    
 	                    <button class="btn btn-primary btn-block" style="margin-top:20px" name="register" type="button"  value="register">Register</button>
 	                                      			
-            	</form>
+            	<form>
             </div> 
             
             <div id="register-div">

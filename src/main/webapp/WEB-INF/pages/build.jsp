@@ -4,30 +4,30 @@
     pageEncoding="ISO-8859-1"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<spring:url value="resources/imgs/example.png" var="examplePNG"/>
-<spring:url value="resources/imgs/logo.png" var="logoPNG"/>
+<spring:url value="/resources/imgs/example.png" var="examplePNG"/>
+<spring:url value="/resources/imgs/logo.png" var="logoPNG"/>
 <spring:url value="/resources/css/styles.css" var="stylesCSS"/>
 
-<spring:url value="resources/imgs/shapes/blackSquare.png" var="blackSquare"/>
-<spring:url value="resources/imgs/shapes/blueSquare.png" var="blueSquare"/>
-<spring:url value="resources/imgs/shapes/graySquare.png" var="graySquare"/>
-<spring:url value="resources/imgs/shapes/greenSquare.png" var="greenSquare"/>
-<spring:url value="resources/imgs/shapes/magentaSquare.png" var="magentaSquare"/>
-<spring:url value="resources/imgs/shapes/orangeSquare.png" var="orangeSquare"/>
-<spring:url value="resources/imgs/shapes/pinkSquare.png" var="pinkSquare"/>
-<spring:url value="resources/imgs/shapes/redSquare.png" var="redSquare"/>
-<spring:url value="resources/imgs/shapes/white.png" var="white"/>
-<spring:url value="resources/imgs/shapes/yellowSquare.png" var="yellowSquare"/>
-<spring:url value="resources/imgs/shapes/blackTri.png" var="blackTri"/>
-<spring:url value="resources/imgs/shapes/blueTri.png" var="blueTri"/>
-<spring:url value="resources/imgs/shapes/grayTri.png" var="grayTri"/>
-<spring:url value="resources/imgs/shapes/greenTri.png" var="greenTri"/>
-<spring:url value="resources/imgs/shapes/mengentaTri.png" var="mengentaTri"/>
-<spring:url value="resources/imgs/shapes/orangeTri.png" var="orangeTri"/>
-<spring:url value="resources/imgs/shapes/pinkTri.png" var="pinkTri"/>
-<spring:url value="resources/imgs/shapes/redTri.png" var="redTri"/>
-<spring:url value="resources/imgs/shapes/whiteTri.png" var="whiteTri"/>
-<spring:url value="resources/imgs/shapes/yellowTri.png" var="yellowTri"/>
+<spring:url value="/resources/imgs/shapes/blackSquare.png" var="blackSquare"/>
+<spring:url value="/resources/imgs/shapes/blueSquare.png" var="blueSquare"/>
+<spring:url value="/resources/imgs/shapes/graySquare.png" var="graySquare"/>
+<spring:url value="/resources/imgs/shapes/greenSquare.png" var="greenSquare"/>
+<spring:url value="/resources/imgs/shapes/magentaSquare.png" var="magentaSquare"/>
+<spring:url value="/resources/imgs/shapes/orangeSquare.png" var="orangeSquare"/>
+<spring:url value="/resources/imgs/shapes/pinkSquare.png" var="pinkSquare"/>
+<spring:url value="/resources/imgs/shapes/redSquare.png" var="redSquare"/>
+<spring:url value="/resources/imgs/shapes/white.png" var="white"/>
+<spring:url value="/resources/imgs/shapes/yellowSquare.png" var="yellowSquare"/>
+<spring:url value="/resources/imgs/shapes/blackTri.png" var="blackTri"/>
+<spring:url value="/resources/imgs/shapes/blueTri.png" var="blueTri"/>
+<spring:url value="/resources/imgs/shapes/grayTri.png" var="grayTri"/>
+<spring:url value="/resources/imgs/shapes/greenTri.png" var="greenTri"/>
+<spring:url value="/resources/imgs/shapes/mengentaTri.png" var="mengentaTri"/>
+<spring:url value="/resources/imgs/shapes/orangeTri.png" var="orangeTri"/>
+<spring:url value="/resources/imgs/shapes/pinkTri.png" var="pinkTri"/>
+<spring:url value="/resources/imgs/shapes/redTri.png" var="redTri"/>
+<spring:url value="/resources/imgs/shapes/whiteTri.png" var="whiteTri"/>
+<spring:url value="/resources/imgs/shapes/yellowTri.png" var="yellowTri"/>
 
 
 
@@ -176,11 +176,11 @@
         <form>
           	<div class="form-group">
 							<label class="control-label" for="name">Name your rocket:</label>
-							<input id="Rname" type="text" maxlength="50" class="form-control">
+							<input id="name" type="text" maxlength="50" class="form-control">
 			</div>
 			
 		<div class="modal-footer">
-          <button type="button" id="saveSub" class="btn btn-default" data-dismiss="modal">Submit</button>
+          <button type="button" id="saveSub" class="btn btn-default" data-dismiss="modal">submit</button>
         </div>
 		</form>
 		

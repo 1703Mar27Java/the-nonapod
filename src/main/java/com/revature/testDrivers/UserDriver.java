@@ -58,11 +58,11 @@ public class UserDriver {
 		user5.setLastName("Higgins");
 		user5.setUsername("ehiggins");
 		user5.setPassword("ehiggins");
-		user5.setUserRole("user");
+		user5.setUserRole("admin");
 		user5.setEmail("ehig@ehig.com");
 		
 		//dao.updateUser(user4);
-		//System.out.println(dao.createUser(user1));
+		System.out.println(dao.createUser(user5));
 		
 		
 		//dao.deleteUser(1);
@@ -76,6 +76,7 @@ public class UserDriver {
 		
 		//System.out.println(dao.getUser(1).toString());
 		//System.out.println(dao.getUser(1).getUserRockets().toString());
+		System.out.println(dao.getUser("asdfas").toString());
 		
 		//System.out.println(dao.deleteUser(2));
 		

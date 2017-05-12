@@ -59,7 +59,27 @@ function initGrid(level){
 	
 }
 
+
+
+ var bucketName = 'https://s3-us-west-2.amazonaws.com/rockets';
+ AWS.config.region = 'us-west-2';
+ var bucket = new AWS.S3({
+     params: {
+
+         Bucket: bucketName
+
+     }
+ });
  
+ function getS3Item(){
+	 var params = {
+			    Bucket: 'rockets'
+			};
+
+			s3.listObjects(params, Meteor.bindEnvironment(function (err, data) {
+
+			}));
+ }
  
  
  function getRandomInt(min, max) {
@@ -104,30 +124,6 @@ function drop(ev) {
 	}
 
 }
-
-
-function saveGridContents(){
-	let gridArray = [];
-	
-	$(".tile").each(function(i,obj){
-		gridArray.push($(this).get(0).innerHTML);
-	});
-	
-	t =gridArray.toString();
-	return t;
-	
-}
-
-function rebuildRocket(rocketString){
-	
-	let rebuildGrid = rocketString.slipt(",");
-	$(".tile").each(function(i,obj){
-		$(this).innerHTML += rebuildGrid[i];
-	})
-	
-}
-
-
 
 function createGrid() {
 	for (var i = 0; i < gridSize; i++) {
@@ -192,46 +188,24 @@ $(document).ready(function(){
 	});	
 	
 	
-    $("#saveSub").click(function() { 
+	$("#saveSub").click(function() { 
+
+    	var s3 = new AWS.S3();
+    	  	
     	
     	$(".active").removeClass('active');
-    	
         html2canvas($("#grid"), {
             onrendered: function(canvas) {
                 theCanvas = canvas;            
                 var dataUrl = canvas.toDataURL("image/png");
+                var blobData = dataURItoBlob(dataUrl);
                 var key = getRandomInt(0, Number.MAX_SAFE_INTEGER).toString();
-                var imgdata = dataUrl.replace(/^data:image\/(png|jpg);base64,/, "");
-                var gridData = saveGridContents();
-                var name = $('#Rname').val();
-                console.log(name);
-                
-                $.ajax({
-                    type: 'post',
-                    url: 'rocket/save',
-                    data: { 
-                      'key' : key,
-                      'image': imgdata,
-                      'grid' : gridData,
-                      'name' : name,
-                      'userId' : 1
-                    },
-                    success: function (response) {
-                    	
-    				console.log("yay");
-                    	
-                    },
-                    error: function (response) {
-
-                    	console.log("nay");
-                    	
-                    }
-                    
-                    
-                 }); 
-                
-                
-                
+                var params = {Bucket: 'rockets', Key: key, ContentType: 'png', Body: blobData,ACL: 'public-read-write'};
+                s3.putObject(params, function (err, data) {
+                    console.log(data);
+                    console.log(err);
+                    console.log(err ? 'ERROR!' : 'UPLOADED.');
+                }); 
             }
         }); 
     }); 

@@ -149,4 +149,30 @@ public class UserDAOImpl implements UserDAO
 			return false;
 		}
 	}
+
+
+	@Override
+	public User getUser(String username) 
+	{
+		try
+		{
+			Session sesh = sessionFactory.getCurrentSession();
+			ArrayList<User> result = new ArrayList<User>();
+			User user = new User();
+			
+
+			result =  (ArrayList<User>) sesh.createQuery("FROM User WHERE username =" + "'" + username + "'").list();
+			
+			if(result.size() > 0)
+			{
+				user = result.get(0);
+			}
+			return user;
+		}
+		catch(HibernateException ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}
+	}
 }

@@ -1,51 +1,145 @@
 package com.revature.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.revature.services.AuthenticateService;
+import com.revature.services.InvalidateService;
+import com.revature.services.UserDataService;
 
-import com.revature.beans.User;
-import com.revature.dao.UserDAO;
-
-
+@RequestMapping(value="")
 @Controller
-@RequestMapping("/login")
 public class LoginController 
 {
+	
 	@RequestMapping(value="", method=RequestMethod.GET)
-	public String userLogin(Model m)
+	public String FrontGET(Model m,  HttpServletRequest request)
 	{
-		return "view";
+		HttpSession sesh = request.getSession();
+		
+		if(!(null == sesh.getAttribute("userLoggedIn")))
+		{
+			if((sesh.getAttribute("userLoggedIn").equals(true)))
+			{
+				if(UserDataService.getUserData(m, sesh))
+				{
+					return "garage";
+				}
+			} 	
+		}
+				
+		else if(!(null == sesh.getAttribute("adminLoggedIn")))
+		{
+			if((sesh.getAttribute("adminLoggedIn").equals(true)))
+			{
+				if(UserDataService.getUserData(m, sesh))
+				{
+					return "admin";
+				}
+			}
+		}
+		return "login";
 	}
 	
 	
-	@RequestMapping(value="/all", method=RequestMethod.GET)
-	public ResponseEntity<Object> getUsers()
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public String loginGET(Model m,  HttpServletRequest request)
 	{
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
-		UserDAO dao = (UserDAO) ac.getBean("userDao");
-		List<User> users = new ArrayList<User>();
-		User user = new User();
-		//user = dao.getUser(4);
+		HttpSession sesh = request.getSession();
 		
-		user.setFirstName("blah");
-		user.setLastName("blahaah");
-		user.setId(6);
-		user.setPassword("blah");
-		user.setUsername("blah");
-		
-		users = dao.getUsers();
-		
-		return ResponseEntity.ok(user);
+		if(!(null == sesh.getAttribute("userLoggedIn")))
+		{
+			if((sesh.getAttribute("userLoggedIn").equals(true)))
+			{
+				if(UserDataService.getUserData(m, sesh))
+				{
+					return "garage";
+				}
+			} 	
+		}
+				
+		else if(!(null == sesh.getAttribute("adminLoggedIn")))
+		{
+			if((sesh.getAttribute("adminLoggedIn").equals(true)))
+			{
+				if(UserDataService.getUserData(m, sesh))
+				{
+					return "admin";
+				}
+			}
+		}
+		return "login";
 	}
 	
+	@RequestMapping(value="home",method=RequestMethod.POST)
+	public String userLogin(@RequestParam(value="username") String username, 
+			@RequestParam(value="password") String password, Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		if(AuthenticateService.validateUser(username, password, sesh, m))
+		{
+			if(sesh.getAttribute("userLoggedIn").equals(true))
+			{
+				return "garage";
+			}
+			
+			else if(sesh.getAttribute("adminLoggedIn").equals(true))
+			{
+				return "admin";
+			}
+		}
+		
+		return "login";
+	}
+	
+	@RequestMapping(value="home",method=RequestMethod.GET)
+	public String userGET(Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		
+		if(!(null == sesh.getAttribute("userLoggedIn")))
+		{
+			if((sesh.getAttribute("userLoggedIn").equals(true)))
+			{
+				if(UserDataService.getUserData(m, sesh))
+				{
+					return "garage";
+				}
+			} 	
+		}
+				
+		else if(!(null == sesh.getAttribute("adminLoggedIn")))
+		{
+			if((sesh.getAttribute("adminLoggedIn").equals(true)))
+			{
+				if(UserDataService.getUserData(m, sesh))
+				{
+					return "admin";
+				}
+			}
+		}
+		return "login";
+	}	
+	
+	@RequestMapping(value="logout",method=RequestMethod.POST)
+	public String userLogout(Model m, HttpServletRequest request)
+	{
+		HttpSession sesh= request.getSession();
+		InvalidateService.invalidateSession(sesh);
+
+		return "login";
+	}
+	
+	@RequestMapping(value="logout",method=RequestMethod.GET)
+	public String userLogoutGET(Model m, HttpServletRequest request)
+	{
+		return "login";
+	}
 }
+

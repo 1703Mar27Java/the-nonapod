@@ -25,7 +25,10 @@ public class Rocket
 	@Autowired
 	private User owner;
 	
-	@Column(name = "LAYOUT", nullable = false)
+	@Column(name = "ROCKET_NAME", nullable = false)
+	private String rocketName;
+	
+	@Column(name = "LAYOUT", columnDefinition="CLOB NOT NULL")
 	private String layout;
 	
 	@Column(name= "ROCKET_PIC")
@@ -110,6 +113,16 @@ public class Rocket
 	public void setRocketOpinions(List<PeerOpinion> rocketOpinions)
 	{
 		this.rocketOpinions = rocketOpinions;
+	}
+
+	public String getRocketName() 
+	{
+		return rocketName;
+	}
+
+	public void setRocketName(String rocketName) 
+	{
+		this.rocketName = rocketName;
 	}
 
 	@Override

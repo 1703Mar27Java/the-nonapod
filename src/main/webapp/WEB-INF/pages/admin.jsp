@@ -3,12 +3,27 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import= "com.revature.beans.User" %>
 
-<spring:url value="resources/imgs/example.png" var="examplePNG"/>
-<spring:url value="resources/imgs/logo.png" var="logoPNG"/>
+<spring:url value="/resources/imgs/example.png" var="examplePNG"/>
+<spring:url value="/resources/imgs/logo.png" var="logoPNG"/>
 <spring:url value="/resources/css/styles.css" var="stylesCSS"/>
 
 
+ <%
+session = request.getSession();
+
+if(!(null == session.getAttribute("user")))
+{
+	User user = new User();
+	user = (User)session.getAttribute("user");
+}
+
+%>
+ 
+ 
+ 
+ 
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -71,10 +86,10 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><form class="navbar-form" action="app" method="post">
 			 		<input type="hidden" value="user.jsp" name="location">
-                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;${user}username</button>
+                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;username</button>
                 </form></li>
 			
-				<li><form class="navbar-form" action="app" method="post">
+				<li><form class="navbar-form" action="logout" method="post">
 			 		<input type="hidden" value="logout" name="location">
                     <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Logout</button>
                 </form>
