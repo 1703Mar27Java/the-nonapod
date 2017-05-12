@@ -3,13 +3,20 @@ package com.revature.controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.revature.services.AuthenticateService;
+import com.revature.services.RegisterService;
+
+@RequestMapping(value="")
+@Controller
 public class RegisterController 
 {
-	@RequestMapping(value="register", method=RequestMethod.GET)
+	@RequestMapping(value="newUser", method=RequestMethod.GET)
 	public String registerGET(Model m,  HttpServletRequest request)
 	{
 		HttpSession sesh = request.getSession();
@@ -17,7 +24,7 @@ public class RegisterController
 		
 		if(!(null == sesh.getAttribute("userLoggedIn")) && (sesh.getAttribute("userLoggedIn").equals(true)))
 		{
-			return "user";
+			return "garage";
 		}
 			
 		else if(!(null == sesh.getAttribute("adminLoggedIn")) && (sesh.getAttribute("adminLoggedIn").equals(true)))
@@ -26,5 +33,21 @@ public class RegisterController
 		}
 		
 		return "login";
+	}
+	
+	@RequestMapping(value="newUser", method=RequestMethod.POST)
+	public String register(@RequestParam String username, @RequestParam String password, 
+							@RequestParam String email, HttpServletRequest request, Model m)
+	{
+		HttpSession sesh = request.getSession();
+		
+		if(RegisterService.registerUser(username, password, email))
+		{
+			if(AuthenticateService.validateUser(username, password, sesh, m))
+			{
+				return "garage";	
+			}
+		}
+			return "login";	
 	}
 }

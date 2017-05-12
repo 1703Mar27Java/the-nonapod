@@ -73,7 +73,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><form class="navbar-form" action="app" method="post">
 			 		<input type="hidden" value="user.jsp" name="location">
-                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;${user}username</button>
+                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;username</button>
                 </form></li>
 			
 				<li><form class="navbar-form" action="logout" method="post">
@@ -94,10 +94,14 @@
 		</div>
 
 		<div class="flex-container">
+			
+			
 			<div class="flex-item">
 				<img class="flex-nail" src="${samplePNG}">
 				<div class="flex-name">My little rocket</div>
 			</div>
+			
+			
 			<div class="flex-item">
 				<img class="flex-nail"
 					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
@@ -179,9 +183,6 @@
 		</div>
 
 	</div>
-
-${user}<br>
-${userRockets}
 
 </body>
 </html>
