@@ -10,10 +10,10 @@ public class MyCredentials implements AWSCredentials {
 	
 	public String getAWSAccessKeyId() {
 		
-		return "AKIAJ2FFNYZVXDOPOHWQ";
+		return System.getenv("A");
 	}
 
 	public String getAWSSecretKey() {
-		return "CtZ3bBx3ZelR7GX2XEB+hjKixhU1JrU+5/IN573v";
+		return System.getenv("B");
 	}
 }
