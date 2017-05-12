@@ -100,19 +100,18 @@ public String saveRocket(Model m, HttpServletRequest request)
 		   ace.printStackTrace();
 		}
 		
-		//send this to database
-		/*		String rocketData = request.getParameter("grid");
+		
+				String rocketData = request.getParameter("grid");
 				String rocketName = request.getParameter("name");
 				String userID = request.getParameter("userID");
-				System.out.println(rocketData);
-				System.out.println(rocketName);
-				
+
 				Rocket saveRocket = new Rocket();
 				saveRocket.setLayout(rocketData);
 				saveRocket.setOwner(userDao.getUser(1));
+				saveRocket.setRocketName(rocketName);
 				String rocketURL = "https://s3-us-west-2.amazonaws.com/rockets/"+keyName;
 				saveRocket.setRocketPic(rocketURL);
-				rocketDao.createRocket(saveRocket); */
+				rocketDao.createRocket(saveRocket); 
 		
 		return "build";
 }

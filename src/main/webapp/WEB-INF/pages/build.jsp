@@ -268,7 +268,7 @@ nav {
 
 	</div>
 
-
+	<span>${layout}</span>
 
 </body>
 </html>
