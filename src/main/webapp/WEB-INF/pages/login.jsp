@@ -75,23 +75,23 @@
 	                    
 	                    <button class="btn btn-primary btn-block" style="margin-top:20px" name="register" type="button"  value="register">Register</button>
 	                                      			
-            	<form>
+            	</form>
             </div> 
             
             <div id="register-div">
-            <form method="post" action="#" class="form-signin" style="margin-top:0;">
+            <form method="post" action="newUser" class="form-signin" style="margin-top:0;">
 						
 						<div class="form-group">
 							<label class="control-label" for="signupName">Username</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
-							<input id="signupName" type="text" maxlength="50" class="form-control">
+							<input id="signupName" type="text" maxlength="50" class="form-control" name="regUsername">
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="signupEmail">Email</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
-							<input id="signupEmail" type="email" maxlength="50" class="form-control">
+							<input id="signupEmail" type="email" maxlength="50" class="form-control" name="regEmail">
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="signupPassword">Password</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
-							<input id="signupPassword" type="password" maxlength="25" class="form-control"  length="40">
+							<input id="signupPassword" type="password" maxlength="25" class="form-control"  length="40" name="regPassword">
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="signupPasswordagain">Password again</label>

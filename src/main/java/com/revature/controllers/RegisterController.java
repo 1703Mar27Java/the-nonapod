@@ -36,14 +36,14 @@ public class RegisterController
 	}
 	
 	@RequestMapping(value="newUser", method=RequestMethod.POST)
-	public String register(@RequestParam String username, @RequestParam String password, 
-							@RequestParam String email, HttpServletRequest request, Model m)
+	public String register(@RequestParam String regUsername, @RequestParam String regPassword, 
+							@RequestParam String regEmail, HttpServletRequest request, Model m)
 	{
 		HttpSession sesh = request.getSession();
 		
-		if(RegisterService.registerUser(username, password, email))
+		if(RegisterService.registerUser(regUsername, regPassword, regEmail))
 		{
-			if(AuthenticateService.validateUser(username, password, sesh, m))
+			if(AuthenticateService.validateUser(regUsername, regPassword, sesh, m))
 			{
 				return "garage";	
 			}

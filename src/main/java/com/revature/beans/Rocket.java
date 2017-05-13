@@ -125,18 +125,28 @@ public class Rocket
 		this.rocketName = rocketName;
 	}
 
+
+
 	@Override
-	public String toString() 
-	{
-		return "Rocket [rocketId=" + rocketId + ", owner=" + owner + ", layout=" + layout + "]";
+	public String toString() {
+		return "Rocket [rocketId=" + rocketId + ", owner=" + owner + ", rocketName=" + rocketName + ", layout=" + layout
+				+ ", rocketPic=" + rocketPic + ", shared=" + shared + ", rocketComments=" + rocketComments
+				+ ", rocketOpinions=" + rocketOpinions + "]";
 	}
 
-	public Rocket(int rocketId, User owner, String layout) 
-	{
+
+
+	public Rocket(int rocketId, User owner, String rocketName, String layout, String rocketPic, boolean shared,
+			List<Comment> rocketComments, List<PeerOpinion> rocketOpinions) {
 		super();
 		this.rocketId = rocketId;
 		this.owner = owner;
+		this.rocketName = rocketName;
 		this.layout = layout;
+		this.rocketPic = rocketPic;
+		this.shared = shared;
+		this.rocketComments = rocketComments;
+		this.rocketOpinions = rocketOpinions;
 	}
 
 	public Rocket() 

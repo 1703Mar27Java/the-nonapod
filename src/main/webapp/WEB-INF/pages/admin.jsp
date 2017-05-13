@@ -109,36 +109,16 @@ if(!(null == session.getAttribute("user")))
 		<div style="display:inline;" class="admin-div">
 
 			<div style="margin-top:20px; width:50%;" class="flex-container">
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
+
+			<c:forEach var ="rocket" items="${users}">
+						
+				<div class = "flex-item">
+				<input type="hidden" value="${rocket.getRocketId()}"/>
+				<img class="flex-nail" src="${rocket.getRocketPic()}"/>
+				<div class="flex-name">${rocket.getRocketName()}</div>
 				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
+			
+			</c:forEach>
 
 			</div>
 		

@@ -73,7 +73,7 @@ public class PeerOpinion
 	@Override
 	public String toString() 
 	{
-		return "PeerOpinion [id=" + id + ", opinion=" + opinion + ", author=" + author + ", rocket=" + rocket + "]";
+		return "PeerOpinion [id=" + id + ", opinion=" + opinion + ", author=" + author.getId() + ", rocket=" + rocket.getRocketId() + "]";
 	}
 
 	public PeerOpinion(int id, String opinion, User author, Rocket rocket) 
