@@ -39,7 +39,24 @@ $(document).ready(function(){
 		$("#go").submit();
 
 	});
+	
+	$("#easy").click(function(){
+		$("#go").attr("action","newrocket");
+		$("#f-layout").val(1);
+		$("#go").submit();
+	});
     
+	$("#medium").click(function(){
+		$("#go").attr("action","newrocket");
+		$("#f-layout").val(2);
+		$("#go").submit();
+	});
+	
+	$("#hard").click(function(){
+		$("#go").attr("action","newrocket");
+		$("#f-layout").val(3);
+		$("#go").submit();
+	});
 	
 	
 });

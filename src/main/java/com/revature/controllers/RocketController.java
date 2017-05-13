@@ -32,10 +32,10 @@ import com.revature.dao.UserDAO;
 import com.revature.services.MyCredentials;
 
 @Controller
-@RequestMapping("/rocket")
+@RequestMapping("")
 public class RocketController {
 
-@RequestMapping(value="", method=RequestMethod.POST)
+@RequestMapping(value="rocket", method=RequestMethod.POST)
 public String userLogin(Model m, @RequestParam(value = "id") int id )
 {
 	AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
@@ -48,6 +48,19 @@ public String userLogin(Model m, @RequestParam(value = "id") int id )
 	
 return "build";
 }
+
+
+@RequestMapping(value="newrocket", method=RequestMethod.POST)
+public String newRocket(Model m, @RequestParam(value = "id") int level )
+{
+
+	
+	m.addAttribute("level", level);
+	
+	
+return "build";
+}
+
 
 
 @RequestMapping(value="save", method=RequestMethod.POST)
