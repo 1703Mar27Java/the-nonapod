@@ -268,7 +268,8 @@ nav {
 
 	</div>
 
-	<span id ="layout">${rocket}</span>
+	<span style="display:none" id ="layout">${rocket}</span>
+	<span style="display:none" id ="level">${level}</span>
 
 </body>
 </html>

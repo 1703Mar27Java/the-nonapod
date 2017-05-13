@@ -1,12 +1,13 @@
+gridLevel = 0;
 gridSize = 0;
-
 function initGrid(level){
+	console.log(level);
 	
 	switch(level){
-	case 1:
+	case "1":
 		gridSize = 64;
 		createGrid();
-		
+		console.log("inside");
 		$('.tile').css("width", "58px");
 		$('.tile').css("height", "58px");
 		
@@ -20,7 +21,7 @@ function initGrid(level){
 		
 		break;
 		
-	case 2:
+	case "2":
 		gridSize = 256;
 		createGrid();
 		
@@ -36,7 +37,7 @@ function initGrid(level){
 		break;
 	
 	
-	case 3:	
+	case "3":	
 		gridSize = 1024;
 		createGrid();
 		
@@ -103,14 +104,13 @@ function drop(ev) {
 
 
 function saveGridContents(){
+	
 	let gridArray = [];
-	
-	
 	$(".tile").each(function(i,obj){
 		gridArray.push($(this).get(0).innerHTML);
 	});
 	
-	gridArray.unshift();
+	gridArray.unshift(gridLevel);
 	t =gridArray.toString();
 	console.log(t);
 	return t;
@@ -120,9 +120,9 @@ function saveGridContents(){
 function rebuildRocket(rocketString){
 	
 	let rebuildGrid = rocketString.split(",");
-	console.log(rebuildGrid);
-	$(".tile").each(function(i=1,obj){
-		$(this).append(rebuildGrid[i]);
+	initGrid(rebuildGrid[0]);
+	$(".tile").each(function(i,obj){
+		$(this).append(rebuildGrid[i+1]);
 	})
 	
 }
@@ -137,7 +137,14 @@ function createGrid() {
 
 $(document).ready(function(){
 
-	initGrid(1);
+	gridLevel=$("#level").html();
+	
+	console.log(gridLevel);
+	
+	initGrid(gridLevel);
+	
+	if(gridLevel ==0)
+		rebuildRocket($("#layout").html());
 	
 	var palet = $("#palet");
 	
@@ -150,9 +157,8 @@ $(document).ready(function(){
 	
 	
 	$("#back").click(function(){
-		console.log('here');
-		console.log($("#layout").html());
-		rebuildRocket($("#layout").html());
+		
+		
 	});
 	
 	
@@ -216,7 +222,7 @@ $(document).ready(function(){
                 
                 $.ajax({
                     type: 'post',
-                    url: 'rocket/save',
+                    url: 'save',
                     data: { 
                       'key' : key,
                       'image': imgdata,
