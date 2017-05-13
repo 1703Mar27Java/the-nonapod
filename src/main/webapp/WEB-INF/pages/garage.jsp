@@ -3,6 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   <%@ page import = "com.revature.beans.Rocket"%> 
+    <%@ page import = "java.util.ArrayList"%> 
+    <%@ page import = "java.util.List"%> 
 
 <spring:url value="/resources/imgs/example.png" var="examplePNG"/>
 <spring:url value="/resources/imgs/logo.png" var="logoPNG"/>
@@ -95,35 +98,16 @@
 
 		<div class="flex-container">
 			
+			<c:forEach var ="rocket" items="${userRockets}">
+						
+				<div class = "flex-item">
+				<input type="hidden" value="${rocket.getRocketId()}"/>
+				<img class="flex-nail" src="${rocket.getRocketPic()}"/>
+				<div class="flex-name">${rocket.getRocketName()}</div>
+				</div>
 			
-			<div class="flex-item">
-				<img class="flex-nail" src="${samplePNG}">
-				<div class="flex-name">My little rocket</div>
-			</div>
-			
-			
-			<div class="flex-item">
-				<img class="flex-nail"
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-				<div class="flex-name">My little rocket</div>
-			</div>
-			<div class="flex-item">
-				<img class="flex-nail"
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-				<div class="flex-name">My little rocket</div>
-			</div>
-			<div class="flex-item">
-				<img class="flex-nail"
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-				<div class="flex-name">My little rocket</div>
-			</div>
-			<div class="flex-item">
-				<img class="flex-nail"
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-				<div class="flex-name">My little rocket</div>
-			</div>
-
-
+			</c:forEach>
+		
 
 		</div>
 
