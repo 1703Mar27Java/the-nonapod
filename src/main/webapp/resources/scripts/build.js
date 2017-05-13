@@ -137,7 +137,7 @@ function createGrid() {
 
 $(document).ready(function(){
 
-	initGrid(3);
+	initGrid(1);
 	
 	var palet = $("#palet");
 	
