@@ -268,7 +268,7 @@ nav {
 
 	</div>
 
-	<span>${layout}</span>
+	<span id ="layout">${rocket}</span>
 
 </body>
 </html>

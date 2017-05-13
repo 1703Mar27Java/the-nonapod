@@ -101,7 +101,7 @@
 			<c:forEach var ="rocket" items="${userRockets}">
 						
 				<div class = "flex-item">
-				<input type="hidden" value="${rocket.getRocketId()}"/>
+				<input class="id" type="hidden" value="${rocket.getRocketId()}"/>
 				<img class="flex-nail" src="${rocket.getRocketPic()}"/>
 				<div class="flex-name">${rocket.getRocketName()}</div>
 				</div>
@@ -167,6 +167,10 @@
 		</div>
 
 	</div>
+
+	<form id="go" action="nowhere" method="post">
+		<input value="8" type = "hidden" id="f-layout" name="id">
+	</form>
 
 </body>
 </html>
