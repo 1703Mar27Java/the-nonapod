@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -34,10 +35,17 @@ import com.revature.services.MyCredentials;
 @RequestMapping("/rocket")
 public class RocketController {
 
-@RequestMapping(value="", method=RequestMethod.GET)
-public String userLogin(Model m)
+@RequestMapping(value="", method=RequestMethod.POST)
+public String userLogin(Model m, @RequestParam(value = "id") int id )
 {
-
+	AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+	RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
+	
+	Rocket rocket = rocketDao.getRocket(id);
+	
+	m.addAttribute("rocket", rocket.getLayout());
+	
+	
 return "build";
 }
 

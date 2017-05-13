@@ -2,6 +2,10 @@ $(document).ready(function(){
 	
 	
 	$(".flex-item").click(function(){
+		
+		$("#f-layout").val($(this).find(".id").val());
+		
+		
 		$("#levels").hide();
 		if($(this).hasClass('selected')){  
 			$(this).removeClass('selected');
@@ -30,6 +34,11 @@ $(document).ready(function(){
 	});
 	
 	
+	$("#build").click(function(){
+		$("#go").attr("action","rocket");
+		$("#go").submit();
+
+	});
     
 	
 	

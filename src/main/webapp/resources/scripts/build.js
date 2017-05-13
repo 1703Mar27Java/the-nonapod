@@ -10,7 +10,6 @@ function initGrid(level){
 		$('.tile').css("width", "58px");
 		$('.tile').css("height", "58px");
 		
-		console.log();
 		
 		$('#palet').children().each(function () {
 			$(this).css("width", "60px");
@@ -59,9 +58,6 @@ function initGrid(level){
 	
 }
 
- 
- 
- 
  function getRandomInt(min, max) {
 	    return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
@@ -109,20 +105,24 @@ function drop(ev) {
 function saveGridContents(){
 	let gridArray = [];
 	
+	
 	$(".tile").each(function(i,obj){
 		gridArray.push($(this).get(0).innerHTML);
 	});
 	
+	gridArray.unshift();
 	t =gridArray.toString();
+	console.log(t);
 	return t;
 	
 }
 
 function rebuildRocket(rocketString){
 	
-	let rebuildGrid = rocketString.slipt(",");
-	$(".tile").each(function(i,obj){
-		$(this).innerHTML += rebuildGrid[i];
+	let rebuildGrid = rocketString.split(",");
+	console.log(rebuildGrid);
+	$(".tile").each(function(i=1,obj){
+		$(this).append(rebuildGrid[i]);
 	})
 	
 }
@@ -137,7 +137,7 @@ function createGrid() {
 
 $(document).ready(function(){
 
-	initGrid(1);
+	initGrid(3);
 	
 	var palet = $("#palet");
 	
@@ -147,6 +147,14 @@ $(document).ready(function(){
 		    crt.style.display = "none"; /* or visibility: hidden, or any of the above */
 		}, false);
 	});
+	
+	
+	$("#back").click(function(){
+		console.log('here');
+		console.log($("#layout").html());
+		rebuildRocket($("#layout").html());
+	});
+	
 	
 	$(document).keyup(function(e){
 		var img = $(".active").find('img');
