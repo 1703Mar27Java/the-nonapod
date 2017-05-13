@@ -32,18 +32,29 @@ public class AuthenticateService
 			if(credMatch.getUserRole().equals("user"))
 			{
 				sesh.setAttribute("userLoggedIn", true);
+
+				sesh.setAttribute("userName", credMatch.getUsername());
+				sesh.setAttribute("firstName", credMatch.getFirstName());
+				sesh.setAttribute("lastName", credMatch.getLastName());
+				return true;
 			}
+			
 			else if(credMatch.getUserRole().equals("admin"))
 			{
 				sesh.setAttribute("adminLoggedIn", true);
-			}
-			m.addAttribute("user", credMatch);
-			m.addAttribute("userRockets", credMatch.getUserRockets());
 
-			sesh.setAttribute("userName", credMatch.getUsername());
-			sesh.setAttribute("firstName", credMatch.getFirstName());
-			sesh.setAttribute("lastName", credMatch.getLastName());
-			return true;
+				sesh.setAttribute("userName", credMatch.getUsername());
+				sesh.setAttribute("firstName", credMatch.getFirstName());
+				sesh.setAttribute("lastName", credMatch.getLastName());
+				return true;
+			}
+			
+			else
+			{
+				return false;
+			}
+			
+
 		}
 		else
 		{

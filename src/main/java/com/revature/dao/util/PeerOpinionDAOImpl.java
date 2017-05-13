@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.PeerOpinion;
+import com.revature.beans.Rocket;
+import com.revature.beans.User;
 import com.revature.dao.PeerOpinionDAO;
 
 @Transactional
@@ -27,9 +29,22 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 		try
 		{
 			Session sesh = sessionFactory.getCurrentSession();
-			sesh.save(opinion);
-
-			return true;
+			if(getOpinion(opinion.getAuthor(), opinion.getRocket()) == null)
+			{
+				sesh.save(opinion);
+				return true;
+			}
+			else
+			{
+				if(updateOpinion(opinion))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
 		}
 		catch(HibernateException ex)
 		{
@@ -40,20 +55,23 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 	}
 
 	@Override
-	public PeerOpinion getOpinion(int opinionId) 
+	public PeerOpinion getOpinion(User author, Rocket rocket) 
 	{
 		try
 		{
 			Session sesh = sessionFactory.getCurrentSession();
 			ArrayList<PeerOpinion> result = new ArrayList<PeerOpinion>();
-			PeerOpinion opinion = new PeerOpinion();
+			PeerOpinion opinion = null;
 			
+			result =  (ArrayList<PeerOpinion>) sesh.createQuery("FROM PeerOpinion WHERE rocket = "+ rocket.getRocketId()).list();
 
-			result =  (ArrayList<PeerOpinion>) sesh.createQuery("FROM PeerOpinion WHERE id =" + opinionId).list();
 			
-			if(result.size() > 0)
+			for(int i = 0; i < result.size(); i++)
 			{
-				opinion = result.get(0);
+				if(result.get(i).getAuthor().getId() == author.getId())
+				{
+					opinion = result.get(i);
+				}
 			}
 			return opinion;
 		}

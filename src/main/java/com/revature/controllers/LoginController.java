@@ -84,12 +84,12 @@ public class LoginController
 		HttpSession sesh = request.getSession();
 		if(AuthenticateService.validateUser(username, password, sesh, m))
 		{
-			if(sesh.getAttribute("userLoggedIn").equals(true))
+			if(!(null == sesh.getAttribute("userLoggedIn")) && sesh.getAttribute("userLoggedIn").equals(true) && UserDataService.getUserData(m, sesh))
 			{
 				return "garage";
 			}
 			
-			else if(sesh.getAttribute("adminLoggedIn").equals(true))
+			else if(!(null == sesh.getAttribute("adminLoggedIn")) && sesh.getAttribute("adminLoggedIn").equals(true) && UserDataService.getUserData(m, sesh))
 			{
 				return "admin";
 			}

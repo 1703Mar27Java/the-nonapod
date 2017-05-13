@@ -96,7 +96,7 @@ public class Comment {
 	@Override
 	public String toString() 
 	{
-		return "Comment [id=" + id + ", comment=" + comment + ", author=" + author + ", rocket=" + rocket + ", date="
+		return "Comment [id=" + id + ", comment=" + comment + ", author=" + author.getId() + ", rocket=" + rocket.getRocketId() + ", date="
 				+ date + "]";
 	}
 
