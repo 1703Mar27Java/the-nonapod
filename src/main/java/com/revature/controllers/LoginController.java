@@ -166,39 +166,6 @@ public class LoginController
 	}
 	
 	
-	
-	
-	@RequestMapping(value="home",method=RequestMethod.GET)
-	public String userLogin(Model m, HttpServletRequest request)
-	{
-		HttpSession sesh = request.getSession();
-		
-		if(!(null == sesh.getAttribute("userLoggedIn")))
-		{
-			if((sesh.getAttribute("userLoggedIn").equals(true)))
-			{
-				if(UserDataService.getUserData(m, sesh))
-				{
-					return "garage";
-				}
-			} 	
-		}
-				
-		else if(!(null == sesh.getAttribute("adminLoggedIn")))
-		{
-			if((sesh.getAttribute("adminLoggedIn").equals(true)))
-			{
-				if(UserDataService.getUserData(m, sesh))
-				{
-					return "admin";
-				}
-			}
-		}
-		return "login";
-	}
-	
-	
-	
 	@RequestMapping(value="admin",method=RequestMethod.GET)
 	public String adminGet(Model m, HttpServletRequest request)
 	{

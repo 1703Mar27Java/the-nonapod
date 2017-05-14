@@ -109,14 +109,14 @@ nav {
 		<div class="collapse navbar-collapse" id="myNavbar">
 
 			<ul class="nav navbar-nav">
-				<li><form class="navbar-form" action="app" method="post">
+				<li><form class="navbar-form" action="backtoGarage" method="post">
 						<input type="hidden" value="home" name="location">
 						<button type="submit" class="btn btn-primary"
 							style="background: none; border: none;">
 							<span class="glyphicon glyphicon-home"></span>&nbsp;My Garage
 						</button>
 					</form></li>
-				<li><form class="navbar-form" action="app" method="post">
+				<li><form class="navbar-form" action="toSharedRockets" method="post">
 						<input type="hidden" value="home" name="location">
 						<button type="submit" class="btn btn-primary"
 							style="background: none; border: none;">
@@ -130,11 +130,11 @@ nav {
 						<input type="hidden" value="user.jsp" name="location">
 						<button type="submit" class="btn btn-primary"
 							style="background: none; border: none;">
-							<span class="glyphicon glyphicon-user"></span>&nbsp;${user}username
+							<span class="glyphicon glyphicon-user"></span>&nbsp;${userName}
 						</button>
 					</form></li>
 
-				<li><form class="navbar-form" action="app" method="post">
+				<li><form class="navbar-form" action="logout" method="post">
 						<input type="hidden" value="logout" name="location">
 						<button type="submit" class="btn btn-primary"
 							style="background: none; border: none;">
