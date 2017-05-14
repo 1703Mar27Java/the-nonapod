@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,13 +30,17 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 		try
 		{
 			Session sesh = sessionFactory.getCurrentSession();
-			if(getOpinion(opinion.getAuthor(), opinion.getRocket()) == null)
+			
+			PeerOpinion oldOpinion = getOpinion(opinion.getAuthor(), opinion.getRocket());
+			if(oldOpinion == null)
 			{
+				System.out.println("here1");
 				sesh.save(opinion);
 				return true;
 			}
 			else
 			{
+				System.out.println("here2");
 				if(updateOpinion(opinion))
 				{
 					return true;
@@ -109,15 +114,22 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 		try
 		{
 			Session sesh = sessionFactory.getCurrentSession();
-			if(opinion.getId() != 0)
-			{
-				sesh.update(opinion);
-				return true;	
-			}
-			else
-			{
-				return false;
-			}
+			
+			PeerOpinion oldOpinion = getOpinion(opinion.getAuthor(), opinion.getRocket());
+			oldOpinion.setOpinion(opinion.getOpinion());
+
+			sesh.update(oldOpinion);
+			return true;
+				
+				/*
+				String hql = "UPDATE PeerOpinion set opinion = :newOpinion" +
+								"WHERE id = :opinionId";
+				
+				Query query = sesh.createQuery(hql);
+				query.setParameter("newOpinion", oldOpinion.getOpinion());
+				query.setParameter("opinionId", oldOpinion.getId());
+				*/
+
 
 		}
 		catch(HibernateException ex)
