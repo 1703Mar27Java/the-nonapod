@@ -102,7 +102,7 @@ if(!(null == session.getAttribute("user")))
 	<div class="container">
 
 		<div style="display:inline;" class="header">
-			<h1>Admin <span id="status" style="margin-left:200px;text-align:center;">Rocket deleted</span></h1> 	
+			<h1>Admin <span id="status" style="margin-left:200px;text-align:center;">Flagged Rockets</span></h1> 	
 		</div>
 		
 		
@@ -113,7 +113,7 @@ if(!(null == session.getAttribute("user")))
 			<c:forEach var ="rocket" items="${flaggedRockets}">
 						
 				<div class = "flex-item">
-				<input type="hidden" value="${rocket.getRocketId()}"/>
+				<input type="hidden" class="flaggedId" value="${rocket.getRocketId()}"/>
 				<img class="flex-nail" src="${rocket.getRocketPic()}"/>
 				<div class="flex-name">${rocket.getRocketName()}</div>
 				</div>
@@ -128,12 +128,24 @@ if(!(null == session.getAttribute("user")))
 	
 		<table id="usertab" class = "table" style=" height:200px;">
         <tbody style="display:block;overflow-y:scroll; "> 
-        
+        	<tr>
+        	<td><strong>Username</strong></td>
+        	<td><strong>User Role</strong></td>
+        	</tr>
         
         	<c:forEach var ="user" items="${users}">
         		<tr>
         			<td>${user.getUsername()}</td>
-        			<td><form><button class= "btn btn-primary">delete</button></form></td>
+        			<td>${user.getUserRole()}</td>
+        			<td>
+        					<input type="hidden" name="userDeleteId" value="${user.getId()}"/>
+        					<button class="btn btn-primary" name="deleteButton">delete</button>
+        			</td>
+        			<td>
+        					<input type="hidden" name="userPromoteId" value="${user.getId()}"/>
+        					<button class="btn btn-primary" name="promoteButton">promote</button>
+        			</td>
+
         		</tr>
         	</c:forEach>
 
@@ -160,7 +172,7 @@ if(!(null == session.getAttribute("user")))
         Are you sure that you want to delete?
 			
 		<div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+          <button type="button" id="deleteFlagged" class="btn btn-default" data-dismiss="modal">Yes</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
         </div>
 		</form>
@@ -184,18 +196,20 @@ if(!(null == session.getAttribute("user")))
         Are you sure that you want to remove flag?
 			
 		<div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+          <button type="button" id="removeFlag" class="btn btn-default" data-dismiss="modal">Yes</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
         </div>
 		</form>
 		
         </div>
       </div>
-      
     </div>
   </div>
-	
-		</div>
+</div>
+
+	<form id="go" action="nowhere" method="post">
+		<input value="8" type = "hidden" id="f-layout" name="id">
+	</form>
 
 </body>
 </html>
