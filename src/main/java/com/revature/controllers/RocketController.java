@@ -1,36 +1,22 @@
 package com.revature.controllers;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Base64.Decoder;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.sql.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.AccessControlList;
-import com.amazonaws.services.s3.model.GroupGrantee;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.Permission;
-import com.amazonaws.services.s3.model.PutObjectRequest;
+
 import com.revature.beans.Comment;
 import com.revature.beans.PeerOpinion;
 import com.revature.beans.Rocket;
@@ -39,7 +25,7 @@ import com.revature.dao.CommentDAO;
 import com.revature.dao.PeerOpinionDAO;
 import com.revature.dao.RocketDAO;
 import com.revature.dao.UserDAO;
-import com.revature.services.MyCredentials;
+import com.revature.dao.util.ApplicationContextSingleton;
 import com.revature.services.PardonService;
 import com.revature.services.SaveRocketService;
 import com.revature.services.UserDataService;
@@ -47,10 +33,12 @@ import com.revature.services.UserDataService;
 @Controller
 @RequestMapping("")
 public class RocketController {
+	
+	private static ApplicationContext ac = ApplicationContextSingleton.getInstance();
+	
 
 	@RequestMapping(value = "rocket", method = RequestMethod.POST)
 	public String userLogin(Model m, @RequestParam(value = "id") int id) {
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 
 		Rocket rocket = rocketDao.getRocket(id);
@@ -72,7 +60,6 @@ public class RocketController {
 	@RequestMapping(value = "toSharedRockets", method = RequestMethod.POST)
 	public String toSharedRockets(Model m, HttpServletRequest requ) {
 		
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 		List<Rocket> rockets = rocketDao.getRockets();
 		List<Rocket> sharedRockets = new ArrayList<Rocket>();
@@ -108,7 +95,6 @@ public class RocketController {
 	@RequestMapping(value = "fly", method = RequestMethod.POST)
 	public String flyPost(Model m, @RequestParam(value = "id") int rocketID) {
 
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 		Rocket rocket = rocketDao.getRocket(rocketID);
 		
@@ -120,7 +106,6 @@ public class RocketController {
 	@RequestMapping(value = "removeRocket", method = RequestMethod.POST)
 	public String removeRocket(Model m, @RequestParam(value = "id") int rocketID) {
 
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 
 		rocketDao.deleteRocket(rocketID);
@@ -132,7 +117,6 @@ public class RocketController {
 	@RequestMapping(value = "share", method = RequestMethod.POST)
 	public String shareRocket(Model m, @RequestParam(value = "id") int rocketID) {
 
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 
 		Rocket updatedRocket = rocketDao.getRocket(rocketID);
@@ -147,7 +131,6 @@ public class RocketController {
 	@RequestMapping(value = "sendtoGarage", method = RequestMethod.POST)
 	public String sendToGarage(Model m, @RequestParam(value = "id") int rocketID,  HttpServletRequest requ) {
 
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 		UserDAO userDao = (UserDAO) ac.getBean("userDao");
 		Rocket rocket = rocketDao.getRocket(rocketID);
@@ -171,7 +154,6 @@ public class RocketController {
 	@RequestMapping(value = "sendtoView", method = RequestMethod.POST)
 	public String sendtoView(Model m, @RequestParam(value = "id") int id, HttpServletRequest requ) {
 		HttpSession sesh = requ.getSession();
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 
 		Rocket rocket = rocketDao.getRocket(id);
@@ -221,7 +203,6 @@ public class RocketController {
 
 	@RequestMapping(value = "like", method = RequestMethod.POST)
 	public String likeRocket(Model m, @RequestParam(value = "id") int rocketID, HttpServletRequest request) {
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		PeerOpinionDAO peerDao = (PeerOpinionDAO) ac.getBean("peerOpinionDao");
 		UserDAO userDao = (UserDAO) ac.getBean("userDao");
 		HttpSession sesh = request.getSession();
@@ -246,7 +227,6 @@ public class RocketController {
 
 	@RequestMapping(value = "dislike", method = RequestMethod.POST)
 	public String dislikeRocket(Model m, @RequestParam(value = "id") int rocketID, HttpServletRequest request) {
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		PeerOpinionDAO peerDao = (PeerOpinionDAO) ac.getBean("peerOpinionDao");
 		UserDAO userDao = (UserDAO) ac.getBean("userDao");
 		HttpSession sesh = request.getSession();
@@ -272,7 +252,6 @@ public class RocketController {
 	@RequestMapping(value = "comment", method = RequestMethod.POST)
 	public String commentRocket(Model m, @RequestParam(value = "id") int rocketID,
 			@RequestParam(value = "comment") String userComment, HttpServletRequest request) {
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		PeerOpinionDAO peerDao = (PeerOpinionDAO) ac.getBean("peerOpinionDao");
 		UserDAO userDao = (UserDAO) ac.getBean("userDao");
 		HttpSession sesh = request.getSession();
@@ -304,7 +283,6 @@ public class RocketController {
 
 	@RequestMapping(value = "flag", method = RequestMethod.POST)
 	public String flagRocket(Model m, @RequestParam(value = "id") int rocketID, HttpServletRequest request) {
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		PeerOpinionDAO peerDao = (PeerOpinionDAO) ac.getBean("peerOpinionDao");
 		UserDAO userDao = (UserDAO) ac.getBean("userDao");
 		HttpSession sesh = request.getSession();
