@@ -88,38 +88,35 @@
 	<div class="container">
 
 		<div class="rocket-header">
-			<h2>Robert: My little rocket</h2>
+			<h2>${rocketAuthor}: ${rocketName}</h2>
 		</div>
 
 			<div class="rocket-view">
-			<span style="float:right; margin-top:10px; font-size:15pt; color:#f9171d;" class="glyphicon glyphicon-thumbs-down">&nbsp;30&nbsp;</span> 				
-			<span style="float:right; margin-top:10px; font-size:15pt; color:#15ce12; " class="glyphicon glyphicon-thumbs-up">&nbsp;50&nbsp;</span>
-			<img style="width:700px;height:500px;margin:25px;margin-left:50px;">
+			<span  style="float:right; margin-top:10px; font-size:15pt; color:#f9171d;" class="glyphicon glyphicon-thumbs-down">&nbsp;<span id="dislikes">${rocketDislikes}</span>&nbsp;</span> 				
+			<span  style="float:right; margin-top:10px; font-size:15pt; color:#15ce12; " class="glyphicon glyphicon-thumbs-up">&nbsp;<span id="likes">${rocketLikes}</span>&nbsp;</span>
+			<img src="${rocketURL}" style="width:700px;height:500px;margin:25px;margin-left:50px;">
 			
 			
 			<div class="rocket-comments">
+	
+							<c:forEach var ="comments" items="${rocketComments}">
+	
 							<div class="comment">
 								<div class="comment-body">
-								DESU<br>
-								DESU<br>
-								DESU<br>
-								DESU<br><br>
-								DESU<br>
-								DESU<br><br>
-								DESU<br>
-								DESU
-								DESU
+									${comments.getComment()}
 								</div>
 								<div class ="comment-header">
-								username @ timestamp
+								${comments.getAuthor().getUsername()}&nbsp;${comments.getDate()}
 								</div>
 							</div>
+			
+							</c:forEach>
+			
 
 						
 						<div class ="new-comment">
-							<textarea style="resize: none;font-size:18pt; margin-left: 5px; margin-top: 5px; background-color:rgba(2, 1, 58, .7);" rows="4" cols="62">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-						</textarea>
-						<button style="width:120px; margin:10px;float:right;" class="btn btn-primary">Submit</button>
+							<textarea id="the-comment" value="" style="resize: none;font-size:18pt; margin-left: 5px; margin-top: 5px; background-color:rgba(2, 1, 58, .7);" rows="4" cols="62"></textarea>
+						<button id="submit" style="width:120px; margin:10px;float:left;" class="btn btn-primary">Submit</button>
 						</div>			
 			</div> 					
 			</div>
@@ -133,7 +130,8 @@
 					
 	</div>
 
-
+	<span style="display:none;" id="hasOpinion">${hasOpinion}</span>
+	<span style="display:none;" id="id">${rocketId}</span>
 
 </body>
 </html>
