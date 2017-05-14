@@ -58,5 +58,37 @@ $(document).ready(function(){
 		$("#go").submit();
 	});
 	
+	$("#destroy").click(function(){
+		
+		remove = $(".selected");
+		
+		$.ajax({
+            type: 'post',
+            url: 'removeRocket',
+            data: { 
+              'id' : $("#f-layout").val()
+            },
+            success: function (response) {
+            	
+			remove.remove();
+			$("#build").hide();
+			$("#view").hide();
+			$("#share").hide();
+			$("#destroy").hide();
+			$("#new-rocket").fadeIn('slow');
+			
+            	
+            },
+            error: function (response) {
+
+            	console.log("nay");
+            	
+            }
+            
+            
+         }); 
+			
+	});
+	
 	
 });

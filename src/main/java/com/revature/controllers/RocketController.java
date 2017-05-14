@@ -8,6 +8,7 @@ import java.util.Base64.Decoder;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,9 +28,11 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.Permission;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.revature.beans.Rocket;
+import com.revature.beans.User;
 import com.revature.dao.RocketDAO;
 import com.revature.dao.UserDAO;
 import com.revature.services.MyCredentials;
+import com.revature.services.UserDataService;
 
 @Controller
 @RequestMapping("")
@@ -49,6 +52,15 @@ public String userLogin(Model m, @RequestParam(value = "id") int id )
 return "build";
 }
 
+@RequestMapping(value="backtoGarage", method=RequestMethod.POST)
+public String backtoGarage(Model m,HttpServletRequest requ)
+{
+	HttpSession sesh = requ.getSession();
+
+	UserDataService.getUserData(m, sesh);
+	return "garage";
+	
+}
 
 @RequestMapping(value="newrocket", method=RequestMethod.POST)
 public String newRocket(Model m, @RequestParam(value = "id") int level )
@@ -61,6 +73,18 @@ public String newRocket(Model m, @RequestParam(value = "id") int level )
 return "build";
 }
 
+@RequestMapping(value="removeRocket", method=RequestMethod.POST)
+public String removeRocket(Model m,@RequestParam(value = "id") int rocketID)
+{
+	
+	AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+    RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
+    
+    rocketDao.deleteRocket(rocketID);
+
+	return "garage";
+	
+}
 
 
 @RequestMapping(value="save", method=RequestMethod.POST)
@@ -122,13 +146,16 @@ public String saveRocket(Model m, HttpServletRequest request)
 		}
 		
 		
+				HttpSession sesh = request.getSession();
+		
 				String rocketData = request.getParameter("grid");
 				String rocketName = request.getParameter("name");
-				String userID = request.getParameter("userID");
+				String username = (String) sesh.getAttribute("userName");
 
+				User user = userDao.getUser(username);
 				Rocket saveRocket = new Rocket();
 				saveRocket.setLayout(rocketData);
-				saveRocket.setOwner(userDao.getUser(1));
+				saveRocket.setOwner(user);
 				saveRocket.setRocketName(rocketName);
 				String rocketURL = "https://s3-us-west-2.amazonaws.com/rockets/"+keyName;
 				saveRocket.setRocketPic(rocketURL);
