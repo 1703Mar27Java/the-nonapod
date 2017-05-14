@@ -8,6 +8,7 @@ import java.util.Base64.Decoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.ui.Model;
@@ -25,12 +26,15 @@ import com.revature.beans.Rocket;
 import com.revature.beans.User;
 import com.revature.dao.RocketDAO;
 import com.revature.dao.UserDAO;
+import com.revature.dao.util.ApplicationContextSingleton;
 
 public class SaveRocketService {
 	
+	private static ApplicationContext ac = ApplicationContextSingleton.getInstance();
+
+	
 	public static void SaveRocket(Model m, HttpServletRequest request)
 	{
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 	    RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 	    UserDAO userDao = (UserDAO) ac.getBean("userDao");
 	    String keyName        = request.getParameter("key");

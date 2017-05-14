@@ -2,19 +2,22 @@ package com.revature.services;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.ui.Model;
 
 import com.revature.beans.User;
 import com.revature.dao.UserDAO;
+import com.revature.dao.util.ApplicationContextSingleton;
 
 public class AuthenticateService 
 {
 
+	private static ApplicationContext ac = ApplicationContextSingleton.getInstance();
+	
 	public static boolean validateUser(String username, String password, HttpSession sesh, Model m)
 	{
-		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		UserDAO dao = (UserDAO) ac.getBean("userDao");
 		
 		
