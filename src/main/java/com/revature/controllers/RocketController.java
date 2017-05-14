@@ -97,7 +97,26 @@ public class RocketController {
 
 		return "build";
 	}
+	
+	
+	@RequestMapping(value = "fly", method = RequestMethod.GET)
+	public String fly(Model m) {
 
+		return "fly";
+	}
+
+	@RequestMapping(value = "fly", method = RequestMethod.POST)
+	public String flyPost(Model m, @RequestParam(value = "id") int rocketID) {
+
+		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
+		Rocket rocket = rocketDao.getRocket(rocketID);
+		
+		m.addAttribute("rocket", rocket.getRocketPic());
+		
+		return "fly";
+	}
+	
 	@RequestMapping(value = "removeRocket", method = RequestMethod.POST)
 	public String removeRocket(Model m, @RequestParam(value = "id") int rocketID) {
 

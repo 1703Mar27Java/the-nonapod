@@ -13,8 +13,10 @@ $(document).ready(function(){
 			$("#view").hide();
 			$("#share").hide();
 			$("#destroy").hide();
+			$("#launch").hide();
 			$("#new-rocket").fadeIn('slow');
 		} else {
+			$("#launch").fadeIn('slow');
 			$("#view").fadeIn('slow');
 			$("#share").fadeIn('slow');
 			$("#build").fadeIn('slow');
@@ -29,6 +31,7 @@ $(document).ready(function(){
 		$("#levels").fadeIn('slow');
 		$("#destroy").hide();
 		$("#build").hide();
+		$("#launch").hide();
 		$("#view").hide();
 		$("#share").hide();
 	});
@@ -83,6 +86,11 @@ $(document).ready(function(){
 	
 	$("#view").click(function(){
 		$("#go").attr("action","sendtoView");
+		$("#go").submit();
+	});
+	
+	$("#launch").click(function(){
+		$("#go").attr("action","fly");
 		$("#go").submit();
 	});
 	

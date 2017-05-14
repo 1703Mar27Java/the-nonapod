@@ -112,6 +112,7 @@
 		</div>
 
 		<div class="button-panel">
+		
 			<button id="new-rocket" class="btn btn-lg btn-primary option">
 				New<br>Rocket
 			</button>
@@ -123,6 +124,7 @@
 			<button id="build" class="btn btn-lg btn-primary option">Build</button>
 			<br>
 			<button id="share" class="btn btn-lg btn-primary option">Share</button>
+			<button style="display:none; height:130px; width:130px;" id="launch" class="btn btn-lg btn-primary option">Launch</button>
 			<span id="shared"></span><br>
 		</div>
 		<div id="levels">
