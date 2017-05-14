@@ -108,7 +108,6 @@ public class UserDAOImpl implements UserDAO
 			Session sesh = sessionFactory.getCurrentSession();
 			if(user.getId() != 0)
 			{
-				sesh.saveOrUpdate(user.getUserRockets());
 				sesh.update(user);
 				return true;	
 			}
