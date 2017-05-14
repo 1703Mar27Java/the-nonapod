@@ -65,6 +65,13 @@ public class RocketController {
 		return "garage";
 
 	}
+	
+	@RequestMapping(value = "toSharedRockets", method = RequestMethod.POST)
+	public String toSharedRockets(Model m, HttpServletRequest requ) {
+		
+		return "shared";
+
+	}
 
 	@RequestMapping(value = "newrocket", method = RequestMethod.POST)
 	public String newRocket(Model m, @RequestParam(value = "id") int level) {
@@ -81,6 +88,20 @@ public class RocketController {
 		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
 
 		rocketDao.deleteRocket(rocketID);
+
+		return "garage";
+
+	}
+
+	@RequestMapping(value = "share", method = RequestMethod.POST)
+	public String shareRocket(Model m, @RequestParam(value = "id") int rocketID) {
+
+		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
+
+		Rocket updatedRocket = rocketDao.getRocket(rocketID);
+		updatedRocket.setShared(true);
+		rocketDao.updateRocket(updatedRocket);
 
 		return "garage";
 

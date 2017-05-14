@@ -40,6 +40,29 @@ $(document).ready(function(){
 
 	});
 	
+	$("#share").click(function(){
+		console.log("in function")
+		$.ajax({
+			type : 'post',
+			url : 'share',
+			data:{
+				'id' : $("#f-layout").val()
+				
+			},
+			success : function(response)
+			{
+				alert("Rocket Shared!");
+			},
+			error: function(response)
+			{
+				alert("Sorry Rocket Wasnt able to be Shared");
+			}
+			
+			
+		})
+		
+		
+	});
 	$("#easy").click(function(){
 		$("#go").attr("action","newrocket");
 		$("#f-layout").val(1);
