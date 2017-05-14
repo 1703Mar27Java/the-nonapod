@@ -81,11 +81,6 @@ $(document).ready(function(){
 		$("#go").submit();
 	});
 	
-	$("#view").click(function(){
-		$("#go").attr("action","sendtoView");
-		$("#go").submit();
-	});
-	
 	$("#destroy").click(function(){
 		
 		remove = $(".selected");

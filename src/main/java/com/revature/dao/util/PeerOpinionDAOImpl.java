@@ -34,13 +34,11 @@ public class PeerOpinionDAOImpl implements PeerOpinionDAO
 			PeerOpinion oldOpinion = getOpinion(opinion.getAuthor(), opinion.getRocket());
 			if(oldOpinion == null)
 			{
-				System.out.println("here1");
 				sesh.save(opinion);
 				return true;
 			}
 			else
 			{
-				System.out.println("here2");
 				if(updateOpinion(opinion))
 				{
 					return true;
