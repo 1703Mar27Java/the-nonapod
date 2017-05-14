@@ -35,9 +35,9 @@ public class UserDataService
 			else if(user.getUserRole().equals("admin"))
 			{
 				ArrayList<User> users = (ArrayList<User>) dao.getUsers();
-				ArrayList<Rocket> flaggedRockets = null; 
+				ArrayList<Rocket> flaggedRockets = new ArrayList<Rocket>(); 
 								
-				for(int i = 0; i < users.size(); i ++)
+				for(int i = 0; i < users.size(); i++)
 				{
 					for(int j = 0; j < users.get(i).getUserRockets().size(); j++)
 					{

@@ -110,7 +110,7 @@ if(!(null == session.getAttribute("user")))
 
 			<div style="margin-top:20px; width:50%;" class="flex-container">
 
-			<c:forEach var ="rocket" items="${users}">
+			<c:forEach var ="rocket" items="${flaggedRockets}">
 						
 				<div class = "flex-item">
 				<input type="hidden" value="${rocket.getRocketId()}"/>
@@ -123,80 +123,20 @@ if(!(null == session.getAttribute("user")))
 			</div>
 		
 	
+	
+	
+	
 		<table id="usertab" class = "table" style=" height:200px;">
         <tbody style="display:block;overflow-y:scroll; "> 
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username  sdf sdf</td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
-        	 	<tr class=".users">
-        	 		<td>Username </td>
-        	 		<td><form><button class="btn btn-primary">delete</button></form></td>
-        	 	</tr>
+        
+        
+        	<c:forEach var ="user" items="${users}">
+        		<tr>
+        			<td>${user.getUsername()}</td>
+        			<td><form><button class= "btn btn-primary">delete</button></form></td>
+        		</tr>
+        	</c:forEach>
+
 
         </tbody>
     </table>
