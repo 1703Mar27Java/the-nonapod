@@ -4,21 +4,16 @@
     pageEncoding="ISO-8859-1"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import= "com.revature.beans.User" %>
-
 <spring:url value="/resources/imgs/example.png" var="examplePNG"/>
 <spring:url value="/resources/imgs/logo.png" var="logoPNG"/>
 <spring:url value="/resources/css/styles.css" var="stylesCSS"/>
-
-
  <%
 session = request.getSession();
-
 if(!(null == session.getAttribute("user")))
 {
-	User user = new User();
-	user = (User)session.getAttribute("user");
+    User user = new User();
+    user = (User)session.getAttribute("user");
 }
-
 %>
  
  
@@ -35,10 +30,8 @@ if(!(null == session.getAttribute("user")))
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
 <link rel="shortcut icon" type="image/png" href="${logoPNG}" />
-
 <title>Rocket Garage</title>
 </head>
-
 <noscript>
     <style type="text/css">
         .container {display:none;}
@@ -46,137 +39,126 @@ if(!(null == session.getAttribute("user")))
     </style>
     <div class="noscriptmsg">
 <div class ="form-header" >
-			<img src="${logoPNG}" style="width:400px;height:400px;" alt=""/>
-			<br><br><br><br>
-			<h1>We're sorry but to enjoy our site to the fullest you must enable JavaScript</h1>
+            <img src="${logoPNG}" style="width:400px;height:400px;" alt=""/>
+            <br><br><br><br>
+            <h1>We're sorry but to enjoy our site to the fullest you must enable JavaScript</h1>
 </div>
     </div>
 </noscript>
-
-
-
 <body>
-
-	<script type="text/javascript" src="<c:url value="/resources/scripts/admin.js" />"></script>
-
+    <script type="text/javascript" src="<c:url value="/resources/scripts/admin.js" />"></script>
 <nav  class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<span class="navbar-brand"><img src="${logoPNG}"
-				style="width: 40px; height: 40px; margin-left: -10px; margin-top: -10px;"></span>
-			<span class="navbar-brand" style="color:white">Rocket Garage</span>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-		
-		<ul class="nav navbar-nav">
-			 <li><form class="navbar-form" action="backtoGarage" method="post">
-			 		<input type="hidden" value="home" name="location">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#myNavbar">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand"><img src="${logoPNG}"
+                style="width: 40px; height: 40px; margin-left: -10px; margin-top: -10px;"></span>
+            <span class="navbar-brand" style="color:white">Rocket Garage</span>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        
+        <ul class="nav navbar-nav">
+             <li><form class="navbar-form" action="app" method="post">
+                    <input type="hidden" value="home" name="location">
                     <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-home"></span>&nbsp;My Garage</button>
                 </form></li>
-                <li><form class="navbar-form" action="toShareRockets" method="post">
-			 		<input type="hidden" value="home" name="location">
+                <li><form class="navbar-form" action="app" method="post">
+                    <input type="hidden" value="home" name="location">
                     <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-cloud"></span>&nbsp;Shared Rockets</button>
                 </form></li>
-	</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><form class="navbar-form" action="app" method="post">
-			 		<input type="hidden" value="user.jsp" name="location">
-                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;${userName}</button>
+    </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><form class="navbar-form" action="app" method="post">
+                    <input type="hidden" value="user.jsp" name="location">
+                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;username</button>
                 </form></li>
-			
-				<li><form class="navbar-form" action="logout" method="post">
-			 		<input type="hidden" value="logout" name="location">
+            
+                <li><form class="navbar-form" action="logout" method="post">
+                    <input type="hidden" value="logout" name="location">
                     <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Logout</button>
                 </form>
-			</ul>
-		</div>
-	</div>
+            </ul>
+        </div>
+    </div>
 </nav>
-
-
-	<div class="container">
-
-		<div style="display:inline;" class="header">
-			<h1>Admin <span id="status" style="margin-left:200px;text-align:center;">Flagged Rockets</span></h1> 	
-		</div>
-		
-		
-		<div style="display:inline;" class="admin-div">
-
-			<div style="margin-top:20px; width:50%;" class="flex-container">
-
-			<c:forEach var ="rocket" items="${flaggedRockets}">
-						
-				<div class = "flex-item">
-				<input type="hidden" class="flaggedId" value="${rocket.getRocketId()}"/>
-				<img class="flex-nail" src="${rocket.getRocketPic()}"/>
-				<div class="flex-name">${rocket.getRocketName()}</div>
-				</div>
-			
-			</c:forEach>
-
-			</div>
-		
-	
-	
-	
-	
-		<table id="usertab" class = "table" style=" height:200px;">
-        <tbody style="display:block;overflow-y:scroll; "> 
-        	<tr>
-        	<td><strong>Username</strong></td>
-        	<td><strong>User Role</strong></td>
-        	</tr>
+    <div class="container">
+        <div style="display:inline;" class="header">
+            <h1>Admin <span id="status" style="margin-left:200px;text-align:center;">Flagged Rockets</span></h1>    
+        </div>
         
-        	<c:forEach var ="user" items="${users}">
-        		<tr>
-        			<td>${user.getUsername()}</td>
-        			<td>${user.getUserRole()}</td>
-        			<td>
-        					<input type="hidden" name="userDeleteId" value="${user.getId()}"/>
-        					<button class="btn btn-primary" name="deleteButton">delete</button>
-        			</td>
-        			<td>
-        					<input type="hidden" name="userPromoteId" value="${user.getId()}"/>
-        					<button class="btn btn-primary" name="promoteButton">promote</button>
-        			</td>
-
-        		</tr>
-        	</c:forEach>
-
-
+        
+        <div style="display:inline;" class="admin-div">
+            <div style="margin-top:20px; width:50%;" class="flex-container">
+            <c:forEach var ="rocket" items="${flaggedRockets}">
+                        
+                <div class = "flex-item">
+                <input type="hidden" class="flaggedId" value="${rocket.getRocketId()}"/>
+                <img class="flex-nail" src="${rocket.getRocketPic()}"/>
+                <div class="flex-name">${rocket.getRocketName()}</div>
+                </div>
+            
+            </c:forEach>
+            </div>
+        
+    
+    
+    
+    
+        <table id="usertab" class = "table" style=" height:200px;">
+        <tbody style="display:block;overflow-y:scroll; "> 
+            <tr>
+            <td><strong>Username</strong></td>
+            <td><strong>User Role</strong></td>
+            </tr>
+        
+            <c:forEach var ="user" items="${users}">
+                <tr id = "${user.getId()}">
+                    <td>${user.getUsername()}</td>
+                    <td>
+                        <p class ="${user.getId()}">
+                            ${user.getUserRole()}
+                        </p>
+                    </td>
+                    <td>
+                            <input type="hidden" name="userDeleteId" value="${user.getId()}"/>
+                            <button class="btn btn-primary" name="deleteButton">delete</button>
+                    </td>
+                    <td>
+                            <input type="hidden" name="userPromoteId" value="${user.getId()}"/>
+                            <button class="btn btn-primary" name="promoteButton">promote</button>
+                    </td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
     </div>
-			<div style="margin-top:320px;" class="button-panel">
-				<button id="delete" data-toggle="modal" data-target="#deleteSure"  class="btn btn-lg btn-primary option">Delete</button><br>
-				<button id="unflag" data-toggle="modal" data-target="#pardonSure" style="font-size:10pt;" class="btn btn-lg btn-primary option">Remove<br>Flag</button><br>
-			</div>
-				
-				
+            <div style="margin-top:320px;" class="button-panel">
+                <button id="delete" data-toggle="modal" data-target="#deleteSure"  class="btn btn-lg btn-primary option">Delete</button><br>
+                <button id="unflag" data-toggle="modal" data-target="#pardonSure" style="font-size:10pt;" class="btn btn-lg btn-primary option">Remove<br>Flag</button><br>
+            </div>
+                
+                
  <div class="modal fade" id="deleteSure" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content" style="background-color:rgba(232, 44, 44, .9)">
-
         <div class="modal-body">
-        	
-        	
+            
+            
         <form>
         Are you sure that you want to delete?
-			
-		<div class="modal-footer">
+            
+        <div class="modal-footer">
           <button type="button" id="deleteFlagged" class="btn btn-default" data-dismiss="modal">Yes</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
         </div>
-		</form>
-		
+        </form>
+        
         </div>
       </div>
       
@@ -188,28 +170,25 @@ if(!(null == session.getAttribute("user")))
     
       <!-- Modal content-->
       <div class="modal-content" style="background-color:rgba(232, 44, 44, .9)">
-
         <div class="modal-body">
-        	
-        	
+            
+            
         <form>
         Are you sure that you want to remove flag?
-			
-		<div class="modal-footer">
+            
+        <div class="modal-footer">
           <button type="button" id="removeFlag" class="btn btn-default" data-dismiss="modal">Yes</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
         </div>
-		</form>
-		
+        </form>
+        
         </div>
       </div>
     </div>
   </div>
 </div>
-
-	<form id="go" action="nowhere" method="post">
-		<input value="8" type = "hidden" id="f-layout" name="id">
-	</form>
-
+    <form id="go" action="nowhere" method="post">
+        <input value="8" type = "hidden" id="f-layout" name="id">
+    </form>
 </body>
 </html>
