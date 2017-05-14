@@ -257,10 +257,13 @@ nav {
 
 
 		<div class="button-panel" style="float: right; margin-top: 110px;">
+		<form action ="backtoGarage" method="post">
 			<button id="back" style="margin-top: 220px;"
-				class="btn btn-lg btn-primary option">
+				class="btn btn-lg btn-primary option" type="submit">
 				Back to<br>Garage
 			</button>
+		</form>
+			
 			<br>
 			<button id="save" data-toggle="modal" data-target="#myModal"
 				class="btn btn-lg btn-primary option">Save</button>
