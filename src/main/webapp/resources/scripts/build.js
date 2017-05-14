@@ -225,6 +225,8 @@ $(document).ready(function(){
     	
     	$(".active").removeClass('active');
     	
+    	$("#grid").css("border", "none");
+    	
         html2canvas($("#grid"), {
             onrendered: function(canvas) {
                 theCanvas = canvas;            
@@ -248,7 +250,7 @@ $(document).ready(function(){
                     success: function (response) {            
                     alert("Rocket successfully saved!")
     				console.log("yay");
-                    	
+                    
                     },
                     error: function (response) {
 
