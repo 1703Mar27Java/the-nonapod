@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
 	
 	$(".flex-item").click(function(){
@@ -75,6 +73,8 @@ $(document).ready(function(){
 	
 	$('button[name="deleteButton"]').click(function(){
 		
+		var tr = $(this).prev().val();
+		
 		$.ajax({
 			type: 'post',
 			url: 'deleteUser',
@@ -83,7 +83,7 @@ $(document).ready(function(){
 			},
 			success: function(response){
 				
-				$(this).closest("tr").remove();
+				$('#' + tr).remove();
 			},
 			
 			error: function(response){
@@ -93,6 +93,33 @@ $(document).ready(function(){
 		});
 		
 	});
+	
+	
+	
+	$('button[name="promoteButton"]').click(function(){
+		
+		var paragraph = $(this).prev().val();
+		
+		$.ajax({
+			type: 'post',
+			url: 'userPromote',
+			data: {
+				'userPromoteId' : $(this).prev().val()
+			},
+			success: function(response){
+				
+				$('.' + paragraph).text('admin');
+				
+			},
+			
+			error: function(response){
+				
+				console.log("non");
+			}
+		});
+		
+	});
+	
 	
 	
 	

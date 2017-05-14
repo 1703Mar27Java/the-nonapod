@@ -93,36 +93,16 @@
 		</div>
 
 			<div class="flex-container">
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
+			
+				<c:forEach var ="rocket" items="${sharedRockets}">
+						
+				<div class = "flex-item">
+				<input class="id" type="hidden" value="${rocket.getRocketId()}"/>
+				<img class="flex-nail" src="${rocket.getRocketPic()}"/>
+				<div class="flex-name">${rocket.getRocketName()}</div>
 				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
-				<div class="flex-item">
-					<img class="flex-nail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0UU93Ob5dOiXO8xYzp-a7ptuXHvXdSN68K-BUTxZUZJqsMafKQ">
-					<div class ="flex-name">
-					My little rocket  
-					</div>										
-				</div>
+			
+			</c:forEach>
 
 
 
@@ -139,6 +119,10 @@
 
 	</div>
 
+
+	<form id="go" action="nowhere" method="post">
+		<input value="8" type = "hidden" id="f-layout" name="id">
+	</form>
 
 
 </body>

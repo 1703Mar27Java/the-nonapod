@@ -55,7 +55,7 @@ $(document).ready(function(){
              	
             	 
             	 
-            	 $(".rocket-comments").prepend("<div class=\"comment\"><div class=\"comment-body\">"+ $("#the-comment").val() +"</div><div class =\"comment-header\"></div></div>");
+            	 $(".rocket-comments").prepend("<div class=\"comment\"><div class=\"comment-body\">"+ $("#the-comment").val() +"</div><div class =\"comment-header\">"+$("#username").text()+"</div></div>");
 				
 				console.log("yay");
              	
@@ -68,6 +68,7 @@ $(document).ready(function(){
     
           });  
 	});
+	
 	
 	
 	

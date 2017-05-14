@@ -205,6 +205,21 @@ $(document).ready(function(){
 		}
 	});	
 	
+	$("#downSub").click(function(){
+		
+		
+		html2canvas($("#grid"), {
+	            onrendered: function(canvas) {
+	                theCanvas = canvas; 
+					canvas.toBlob(function(blob) {
+					    saveAs(blob, $("#downName").val());
+					});
+	            },
+			});
+			
+		});
+	
+	
 	
     $("#saveSub").click(function() { 
     	
@@ -230,8 +245,8 @@ $(document).ready(function(){
                       'name' : name,
                       'userId' : 1
                     },
-                    success: function (response) {
-                    	
+                    success: function (response) {            
+                    alert("Rocket successfully saved!")
     				console.log("yay");
                     	
                     },

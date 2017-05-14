@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.Calendar;
@@ -71,6 +72,20 @@ public class RocketController {
 	@RequestMapping(value = "toSharedRockets", method = RequestMethod.POST)
 	public String toSharedRockets(Model m, HttpServletRequest requ) {
 		
+		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
+		List<Rocket> rockets = rocketDao.getRockets();
+		List<Rocket> sharedRockets = new ArrayList<Rocket>();
+		
+		for(Rocket r : rockets){
+			if(r.isShared()){
+				sharedRockets.add(r);
+			}
+		}
+		
+		m.addAttribute("sharedRockets", sharedRockets);
+		
+		
 		return "shared";
 
 	}
@@ -106,6 +121,31 @@ public class RocketController {
 		rocketDao.updateRocket(updatedRocket);
 
 		return "garage";
+
+	}
+	
+	
+	@RequestMapping(value = "sendtoGarage", method = RequestMethod.POST)
+	public String sendToGarage(Model m, @RequestParam(value = "id") int rocketID,  HttpServletRequest requ) {
+
+		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		RocketDAO rocketDao = (RocketDAO) ac.getBean("rocketDao");
+		UserDAO userDao = (UserDAO) ac.getBean("userDao");
+		Rocket rocket = rocketDao.getRocket(rocketID);
+		HttpSession sesh = requ.getSession();		
+		String username = (String) sesh.getAttribute("userName");
+		User user = userDao.getUser(username);
+		
+		Rocket newRocket = new Rocket();
+		newRocket.setLayout(rocket.getLayout());
+		newRocket.setRocketName(rocket.getRocketName());
+		newRocket.setRocketPic(rocket.getRocketPic());
+		newRocket.setShared(false);
+		newRocket.setOwner(user);
+		
+		rocketDao.createRocket(newRocket);
+
+		return "shared";
 
 	}
 

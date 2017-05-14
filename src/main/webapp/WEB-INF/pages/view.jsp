@@ -42,6 +42,10 @@
 
 <body>
 
+		<script type="text/javascript"
+		src="<c:url value="/resources/scripts/html2canvas.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/scripts/FileSaver.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/scripts/view.js" />"></script>
 
 <nav  class="navbar navbar-inverse">
@@ -88,13 +92,13 @@
 	<div class="container">
 
 		<div class="rocket-header">
-			<h2>${rocketAuthor}: ${rocketName}</h2>
+			<h2>${rocketAuthor}: <span id="Rname">${rocketName}</span></h2>
 		</div>
 
 			<div class="rocket-view">
 			<span  style="float:right; margin-top:10px; font-size:15pt; color:#f9171d;" class="glyphicon glyphicon-thumbs-down">&nbsp;<span id="dislikes">${rocketDislikes}</span>&nbsp;</span> 				
 			<span  style="float:right; margin-top:10px; font-size:15pt; color:#15ce12; " class="glyphicon glyphicon-thumbs-up">&nbsp;<span id="likes">${rocketLikes}</span>&nbsp;</span>
-			<img src="${rocketURL}" style="width:700px;height:500px;margin:25px;margin-left:50px;">
+			<img id="Rimage" src="${rocketURL}" style="width:600px;height:500px;margin:25px;margin-left:100px;">
 			
 			
 			<div class="rocket-comments">
@@ -132,6 +136,7 @@
 
 	<span style="display:none;" id="hasOpinion">${hasOpinion}</span>
 	<span style="display:none;" id="id">${rocketId}</span>
+	<span style ="display:none" id ="username">${userName}</span>
 
 </body>
 </html>

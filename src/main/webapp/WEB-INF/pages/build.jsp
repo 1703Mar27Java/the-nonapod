@@ -126,7 +126,7 @@ nav {
 					</form></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><form class="navbar-form" action="app" method="post">
+				<li><form class="navbar-form" action="#" method="post">
 						<input type="hidden" value="user.jsp" name="location">
 						<button type="submit" class="btn btn-primary"
 							style="background: none; border: none;">
@@ -254,19 +254,53 @@ nav {
 
 			</div>
 		</div>
+		
+		
+		
+		
+		<div class="modal fade" id="downModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content"
+					style="background-color: rgba(232, 44, 44, .9)">
+
+					<div class="modal-body">
+
+
+						<form>
+							<div class="form-group">
+								<label class="control-label" for="name">Name your
+									picture:</label> <input id="downName" type="text" maxlength="50"
+									class="form-control">
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" id="downSub" class="btn btn-default"
+									data-dismiss="modal">Submit</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
 
 
 		<div class="button-panel" style="float: right; margin-top: 110px;">
 		<form action ="backtoGarage" method="post">
-			<button id="back" style="margin-top: 220px;"
+			<button id="back" style="margin-top: 80px;"
 				class="btn btn-lg btn-primary option" type="submit">
 				Back to<br>Garage
 			</button>
 		</form>
 			
-			<br>
 			<button id="save" data-toggle="modal" data-target="#myModal"
 				class="btn btn-lg btn-primary option">Save</button>
+			<br><br>
+			<button id="down" data-toggle="modal" data-target="#downModal" style="background-color:blue" class="btn btn-lg btn-primary option"><span class="glyphicon glyphicon-download-alt"> </span></button><br>
 		</div>
 
 	</div>
