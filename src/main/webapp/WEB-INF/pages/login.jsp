@@ -82,15 +82,15 @@
             <form method="post" action="newUser" class="form-signin" style="margin-top:0;">
 						
 						<div class="form-group">
-							<label class="control-label" for="signupName">Username</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
+							<label class="control-label" for="signupName">Username</label><span style="color:red;"></span>
 							<input id="signupName" type="text" maxlength="50" class="form-control" name="regUsername">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="signupEmail">Email</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
+							<label class="control-label" for="signupEmail">Email</label><span style="color:red;"></span>
 							<input id="signupEmail" type="email" maxlength="50" class="form-control" name="regEmail">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="signupPassword">Password</label><span style="color:red;">&nbsp;&nbsp;&nbsp; Error</span>
+							<label class="control-label" for="signupPassword">Password</label><span style="color:red;"></span>
 							<input id="signupPassword" type="password" maxlength="25" class="form-control"  length="40" name="regPassword">
 						</div>
 						<div class="form-group">
