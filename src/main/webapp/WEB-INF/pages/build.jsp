@@ -126,7 +126,7 @@ nav {
 					</form></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><form class="navbar-form" action="#" method="post">
+				<li><form class="navbar-form" action="profile" method="post">
 						<input type="hidden" value="user.jsp" name="location">
 						<button type="submit" class="btn btn-primary"
 							style="background: none; border: none;">
