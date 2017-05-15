@@ -39,6 +39,7 @@ public class AuthenticateService
 				sesh.setAttribute("userName", credMatch.getUsername());
 				sesh.setAttribute("firstName", credMatch.getFirstName());
 				sesh.setAttribute("lastName", credMatch.getLastName());
+				sesh.setAttribute("email", credMatch.getEmail());
 				return true;
 			}
 			
@@ -49,6 +50,7 @@ public class AuthenticateService
 				sesh.setAttribute("userName", credMatch.getUsername());
 				sesh.setAttribute("firstName", credMatch.getFirstName());
 				sesh.setAttribute("lastName", credMatch.getLastName());
+				sesh.setAttribute("email", credMatch.getEmail());
 				return true;
 			}
 			

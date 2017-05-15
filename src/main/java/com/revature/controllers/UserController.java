@@ -31,6 +31,53 @@ public class UserController
 		UserService.promote(userId);
 		return "admin";
 	}
+	
+	@RequestMapping(value="profile", method=RequestMethod.POST)
+	public String userProfile(Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		return "user";
+	}
+	
+	@RequestMapping(value="profile", method=RequestMethod.GET)
+	public String userProfileGET(Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		return "user";
+	}
+	
+	@RequestMapping(value="passwordChange", method=RequestMethod.POST)
+	public String passwordChange(@RequestParam(value="newPassword") String password, Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		UserService.changePassword(password, sesh);
+		return "user";
+	}
+	
+	@RequestMapping(value="passwordChange", method=RequestMethod.GET)
+	public String passwordChangeGET(Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		return "user";
+	}
+	
+	@RequestMapping(value="infoChange", method=RequestMethod.POST)
+	public String infoChange(@RequestParam(value="firstName") String newFirst,
+							@RequestParam(value="lastName") String newLast,
+							@RequestParam(value="email") String newEmail,
+							Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		UserService.changeInfo(newFirst, newLast, newEmail, sesh);
+		return "user";
+	}
+	
+	@RequestMapping(value="infoChange", method=RequestMethod.GET)
+	public String infoChangeGET(Model m, HttpServletRequest request)
+	{
+		HttpSession sesh = request.getSession();
+		return "user";
+	}
 }
 
 

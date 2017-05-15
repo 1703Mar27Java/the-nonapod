@@ -61,20 +61,13 @@ if(!(null == session.getAttribute("user")))
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         
-        <ul class="nav navbar-nav">
-             <li><form class="navbar-form" action="app" method="post">
-                    <input type="hidden" value="home" name="location">
-                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-home"></span>&nbsp;My Garage</button>
-                </form></li>
-                <li><form class="navbar-form" action="app" method="post">
-                    <input type="hidden" value="home" name="location">
-                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-cloud"></span>&nbsp;Shared Rockets</button>
-                </form></li>
+     <ul class="nav navbar-nav">
+ 
     </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><form class="navbar-form" action="app" method="post">
+                <li><form class="navbar-form" action="profile" method="post">
                     <input type="hidden" value="user.jsp" name="location">
-                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;username</button>
+                    <button  type="submit" class="btn btn-primary" style="background:none;border:none;"><span class="glyphicon glyphicon-user"></span>&nbsp;${userName}</button>
                 </form></li>
             
                 <li><form class="navbar-form" action="logout" method="post">
